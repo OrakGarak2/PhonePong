@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.nobi.roundedcorners": {
+      "version": "https://github.com/kirevdokimov/Unity-UI-Rounded-Corners.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "33135342e868201eb0d4cef821ecab90caca373e"
+    },
     "com.unity.2d.animation": {
       "version": "10.1.4",
       "depth": 1,
@@ -292,6 +299,13 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "com.unity.unityutility": {
+      "version": "https://github.com/KimNora07/UnityUtility.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "41671d2a77f4557435178935400121c5d9d96690"
     },
     "com.unity.visualscripting": {
       "version": "1.9.5",
