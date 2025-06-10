@@ -6,6 +6,9 @@ using System.Collections.Generic;
 // Unity
 using UnityEngine;
 
+// PhonePong
+using PhonePong.Layer;
+
 public class Ball : MonoBehaviour
 {
     [Header("컴포넌트")]
@@ -23,26 +26,44 @@ public class Ball : MonoBehaviour
     [SerializeField][Range(0, 10f)] private float startDirectionRangeX;
     [SerializeField][Range(0, 10f)] private float startDirectionRangeY;
 
-    private void Awake()
+    [Header("기본 공")]
+    [SerializeField] private bool dontDestroyOnGoal;
+    public bool DontDestroyOnGoal => dontDestroyOnGoal;
+
+    private const int barLayer = LayerDatas.barLayer;
+    private const float resetWaitTime = 1f;
+
+    private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
 
-    private void OnEnable()
-    {
+        SetDontDestroyOnGoal();
+
+        // startDirectionRangeX가 startDirectionRangeY보다 커야지 시작할 때 공이 가운데에서 오래 머물지 않는다.
+        if (startDirectionRangeX <= startDirectionRangeY) startDirectionRangeX += 1f;
+
         Reset();
     }
 
-    public virtual void Reset()
+    public virtual void SetDontDestroyOnGoal() => dontDestroyOnGoal = true;
+
+    public void Reset() => StartCoroutine(CoroutineReset());
+
+    public virtual IEnumerator CoroutineReset()
     {
         ResetSpeed();
         ResetColor();
+        rb2D.linearVelocity = Vector2.zero;
         transform.position = Vector2.zero;
 
-        Vector2 startDirection = new Vector2(
-            UnityEngine.Random.Range(-startDirectionRangeX, startDirectionRangeX),
-            UnityEngine.Random.Range(-startDirectionRangeY, startDirectionRangeY)).normalized;
+        yield return new WaitForSeconds(resetWaitTime);
+
+        float startDirectionY = UnityEngine.Random.Range(-startDirectionRangeY, startDirectionRangeY);
+        float startDirectionX = UnityEngine.Random.Range(startDirectionY >= 0 ? startDirectionY : -startDirectionRangeX,
+                                                        startDirectionY >= 0 ? startDirectionRangeX : startDirectionY);
+
+        Vector2 startDirection = new Vector2(startDirectionX, startDirectionY).normalized;
 
         rb2D.linearVelocity = startDirection * currentSpeed;
     }
@@ -51,41 +72,25 @@ public class Ball : MonoBehaviour
     public void ResetColor() => spriteRenderer.color = originalColor;
     public void ChangeColor(Color newColor) => spriteRenderer.color = newColor;
 
-    float HitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight)
+    private float HitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight)
     {
-        // ascii art:
-        // ||  1 <- at the top of the racket
-        // ||
-        // ||  0 <- at the middle of the racket
-        // ||
-        // || -1 <- at the bottom of the racket
         return (ballPos.y - racketPos.y) / racketHeight;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        // Note: 'col' holds the collision information. If the
-        // Ball collided with a racket, then:
-        //   col.gameObject is the racket
-        //   col.transform.position is the racket's position
-        //   col.collider is the racket's collider
+        if (col.gameObject.layer != barLayer) { return; }
 
-        // did we hit a racket? then we need to calculate the hit factor
-        if (col.gameObject.layer == 6) // TODO: 후에 레이어 수정할 것
-        {
-            // Calculate y direction via hit Factor
-            float y = HitFactor(transform.position,
+        // 공이 맞은 방향을 계산해서 y 방향 벡터를 구한다.
+        float y = HitFactor(transform.position,
                                 col.transform.position,
                                 col.collider.bounds.size.y);
 
-            // Calculate x direction via opposite collision
-            float x = col.relativeVelocity.x > 0 ? 1 : -1;
+        // 공과 라켓의 상대 속도를 계산해서 x 방향 벡터를 구한다.
+        float x = col.relativeVelocity.x > 0 ? 1 : -1;
 
-            // Calculate direction, make length=1 via .normalized
-            Vector2 dir = new Vector2(x, y).normalized;
+        Vector2 dir = new Vector2(x, y).normalized;
 
-            // Set Velocity with dir * speed
-            rb2D.linearVelocity = dir * currentSpeed;
-        }
+        rb2D.linearVelocity = dir * currentSpeed;
     }
 }

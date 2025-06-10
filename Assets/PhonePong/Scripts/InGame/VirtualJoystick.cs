@@ -14,7 +14,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private RectTransform lever;
 
-    [SerializeField] private Bar bar;
+    [SerializeField] private Racket racket;
 
     [SerializeField] private float leverRange;
     [SerializeField] private float signLeverPosY;
@@ -27,11 +27,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // float leverPosY = eventData.position.y - rectTransform.position.y;
-
-        // leverPosY = Math.Abs(leverPosY) < leverRange ? leverPosY : Math.Sign(leverPosY) * leverRange;
-
-        // lever.anchoredPosition = new Vector2(lever.anchoredPosition.x, leverPosY);
+        // TODO: 나중에도 안쓰면 삭제할 것
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -45,14 +41,13 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         if (signNewLeverPosY != signLeverPosY)
         {
-            bar.Move(signLeverPosY = signNewLeverPosY);
+            racket.Move(signLeverPosY = signNewLeverPosY);
         }
-        
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         lever.anchoredPosition = Vector2.zero;
-        bar.Move(signLeverPosY = 0f);
+        racket.Move(signLeverPosY = 0f);
     }
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 // Unity
 using UnityEngine;
 
-public class Bar : MonoBehaviour
+public class Racket : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb2D;
     [SerializeField] private float speed;
