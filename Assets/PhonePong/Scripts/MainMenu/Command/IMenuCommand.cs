@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PhonePong.MainMenu
+namespace PhonePong.MainMenu.Command
 {
     public interface IMenuCommand
     {

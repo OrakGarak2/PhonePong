@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ namespace PhonePong.MainMenu
     public interface IMainMenuView
     {
         void SetActiveAllPanels(bool isActive);
+        void SetActiveAllGroups(bool isActive);
         void OnStartMenu();
         
         // Panel

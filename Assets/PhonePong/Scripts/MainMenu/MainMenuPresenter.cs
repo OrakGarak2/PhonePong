@@ -14,7 +14,13 @@ namespace PhonePong.MainMenu
         Settings,
         Credit,
         Exit,
-        Close
+        Close,
+        Yes,
+        No,
+        Select1P,
+        Select2P,
+        SelectClassicMode,
+        SelectAbilityMode
     }
     
     public class MainMenuPresenter
@@ -28,31 +34,29 @@ namespace PhonePong.MainMenu
         {
             this.view = view;
             this.model = model;
+            this.commands = new Dictionary<MenuCommand, IMenuCommand>();
             
-            var executeStart = new ExecuteStart(view, model);
-            var executeSettings = new ExecuteSettings(view, model);
-            var executeCredit = new ExecuteCredit(view, model);
-            var executeExit = new ExecuteExit(view, model);
-            var executeClose = new ExecuteClose(view, model);
-
-            var commandDic = new Dictionary<MenuCommand, IMenuCommand>
-            {
-                {MenuCommand.Start, executeStart},
-                {MenuCommand.Settings, executeSettings},
-                {MenuCommand.Credit, executeCredit},
-                {MenuCommand.Exit, executeExit},
-                {MenuCommand.Close, executeClose}
-            };
-            
-            commands = commandDic;
-        
             Initialize();
         }
         
         private void Initialize()
         {
+            // Command
+            commands[MenuCommand.Start] = new DelegateCommand(StartCommand);
+            commands[MenuCommand.Settings] = new DelegateCommand(SettingsCommand);
+            commands[MenuCommand.Credit] = new DelegateCommand(CreditCommand);
+            commands[MenuCommand.Exit] = new DelegateCommand(ExitCommand);
+            commands[MenuCommand.Close] = new DelegateCommand(CloseCommand);
+            commands[MenuCommand.Yes] = new DelegateCommand(YesCommand);
+            commands[MenuCommand.No] = new DelegateCommand(NoCommand);
+            commands[MenuCommand.Select1P] = new DelegateCommand(Select1PlayersGroup);
+            commands[MenuCommand.Select2P] = new DelegateCommand(Select2PlayersGroup);
+            commands[MenuCommand.SelectClassicMode] = new DelegateCommand(SelectClassicModeGroup);
+            commands[MenuCommand.SelectAbilityMode] = new DelegateCommand(SelectAbilityModeGroup);
+            
             // Setting
             view.SetActiveAllPanels(false);
+            view.SetActiveAllGroups(false);
             view.GetMainPanel().SetActive(true);
             
             // FadeOut
@@ -66,6 +70,104 @@ namespace PhonePong.MainMenu
                 commandResult.Execute();
             }
         }
+
+        #region Commands
+
+        private void StartCommand()
+        {
+            model.MenuCommand = MenuCommand.Start;
+            
+            view.GetPopupPanel().SetActive(true);
+            view.GetSelectPlayersGroup().SetActive(true);
+        }
+
+        private void SettingsCommand()
+        {
+            model.MenuCommand = MenuCommand.Settings;
+            
+            view.GetPopupPanel().SetActive(true);
+            view.GetSettingsGroup().SetActive(true);
+        }
+
+        private void CreditCommand()
+        {
+            model.MenuCommand = MenuCommand.Credit;
+            
+            view.GetPopupPanel().SetActive(true);
+            view.GetCreditGroup().SetActive(true);
+        }
+
+        private void ExitCommand()
+        {
+            model.MenuCommand = MenuCommand.Exit;
+            
+            view.GetExitPanel().SetActive(true);
+        }
+
+        private void CloseCommand()
+        {
+            switch (model.MenuCommand)
+            {
+                case MenuCommand.Start:
+                    model.MenuCommand = MenuCommand.None;
+                    view.GetSelectPlayersGroup().SetActive(false);
+                    view.GetSelectModeGroup().SetActive(false);
+                    view.GetPopupPanel().SetActive(false);
+                    break;
+                case MenuCommand.Settings:
+                    model.MenuCommand = MenuCommand.None;
+                    view.GetSettingsGroup().SetActive(false);
+                    view.GetPopupPanel().SetActive(false);
+                    break;
+                case MenuCommand.Credit:
+                    model.MenuCommand = MenuCommand.None;
+                    view.GetCreditGroup().SetActive(false);
+                    view.GetPopupPanel().SetActive(false);
+                    break;
+                default:
+                    Debug.LogError("없는 메뉴 타입 입니다.");
+                    break;
+            }
+        }
+
+        private void YesCommand()
+        {
+            Application.Quit();
+        }
+
+        private void NoCommand()
+        {
+            model.MenuCommand = MenuCommand.None;
+            
+            view.GetExitPanel().SetActive(false);
+        }
+
+        private void Select1PlayersGroup()
+        {
+            // 나중에 추가 할 1인용
+        }
+        
+        private void Select2PlayersGroup()
+        {
+            view.GetSelectPlayersGroup().SetActive(false);
+            view.GetPopupPanel().SetActive(true);
+            view.GetSelectModeGroup().SetActive(true);
+        }
+
+        private void SelectClassicModeGroup()
+        {
+            // 로딩창 -> 클래식 모드 씬으로 이동
+            Debug.Log("클래식 모드로 이동!");
+        }
+
+        private void SelectAbilityModeGroup()
+        {
+            // 로딩창 -> 능력자 모드 씬으로 이동
+            Debug.Log("능력자 모드로 이동!");
+        }
+
+        #endregion
+
     }
 }
 
