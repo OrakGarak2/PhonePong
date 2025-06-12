@@ -12,6 +12,11 @@ public class AbilityBall : Ball
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color originalColor;
 
+    [Header("라켓(임시)")]
+    [SerializeField] private AbilityRacket[] rackets;
+
+    public Rigidbody2D Rb2D => rb2D;
+
     protected override void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -21,10 +26,19 @@ public class AbilityBall : Ball
 
     public void ChangeColor(Color newColor) => spriteRenderer.color = newColor;
     public void ResetColor() => spriteRenderer.color = originalColor;
-
+    public void MultiplySpeed(float speedMultiple)
+    {
+        rb2D.linearVelocity *= speedMultiple;
+    }
     protected override IEnumerator CoroutineReset()
     {
         ResetColor();
+
+        foreach (var racket in rackets)
+        {
+            racket.Reset();
+        }
+
         return base.CoroutineReset();
     }
 }

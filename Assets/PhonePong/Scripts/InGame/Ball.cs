@@ -12,11 +12,11 @@ using PhonePong.Layer;
 public class Ball : MonoBehaviour
 {
     [Header("물리")]
-    [SerializeField] private Rigidbody2D rb2D;
+    [SerializeField] protected Rigidbody2D rb2D;
 
     [Header("이동속도")]
     [SerializeField] private float originalSpeed;
-    [SerializeField] private float currentSpeed;
+    [SerializeField] protected float currentSpeed;
 
     [Header("초기 값 설정")]
     [SerializeField][Range(0, 10f)] private float startDirectionRangeX;
@@ -26,7 +26,7 @@ public class Ball : MonoBehaviour
     [SerializeField] protected bool dontDestroyOnGoal;
     public bool DontDestroyOnGoal => dontDestroyOnGoal;
 
-    private const int racketLayer = LayerDatas.racketLayer;
+    protected const int racketLayer = LayerDatas.racketLayer;
     private const float resetWaitTime = 1f;
 
     protected virtual void Start()
@@ -69,7 +69,7 @@ public class Ball : MonoBehaviour
         return (ballPos.y - racketPos.y) / racketHeight;
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    protected virtual void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.layer == racketLayer)
         {

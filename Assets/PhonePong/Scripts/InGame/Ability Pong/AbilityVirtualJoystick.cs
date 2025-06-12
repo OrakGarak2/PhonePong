@@ -9,7 +9,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // PhonePong
-using PhonePong.InGameInterface;
 using PhonePong.Enum;
 
 public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -19,6 +18,7 @@ public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHan
     [SerializeField] RectTransform[] abilityUIArray;
     [SerializeField] Image[] abilityPanelImageArray;
     [SerializeField] Color selectedColor;
+    [SerializeField] Color originalColor;
 
     [Header("능력: 값")]
     [SerializeField] Vector2[] abilityUIDirectionArray;
@@ -32,7 +32,6 @@ public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHan
     [SerializeField] RectTransform lever;
     [SerializeField] Image leverImage;
     [SerializeField] private float leverRange;
-    [SerializeField] private float signLeverPosY;
 
     [SerializeField] private PlayerEnum playerEnum;
     private float joystickToPanelDirectionX{
@@ -44,10 +43,13 @@ public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHan
     }
 
     [Header("라켓")]
-    [SerializeField] private Racket racket;
+    [SerializeField] private AbilityRacket racket;
 
     void Start()
     {
+        rectTransform = GetComponent<RectTransform>();
+        leverImage = lever.GetComponent<Image>();
+
         abilityPanelImageArray = new Image[abilityUIArray.Length];
         abilityUIDirectionArray = new Vector2[abilityUIArray.Length];
 
@@ -69,12 +71,9 @@ public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHan
     {
         if (!canUseAbility) { return; }
 
-        Vector2 joystickPos = (Vector2)rectTransform.position;
-        Vector2 leverPos = GetLeverPos(eventData.position, joystickPos);
+        lever.anchoredPosition = GetLeverPos(eventData.position, rectTransform.position);
 
-        lever.anchoredPosition = leverPos;
-
-        Vector2 leverDirection = (leverPos - joystickPos).normalized;
+        Vector2 leverDirection = ((Vector2)(lever.position - rectTransform.position)).normalized;
 
         if (CheckInAbilityPanel(leverDirection))
         {
@@ -89,21 +88,27 @@ public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHan
                 }
             }
         }
-        else
+        else if (selectedAbilityIndex != notSelectedAbilityIndex)
         {
-
+            abilityPanelImageArray[selectedAbilityIndex].color = originalColor;
+            selectedAbilityIndex = notSelectedAbilityIndex;
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         abilityUI.SetActive(false);
-        leverImage.fillAmount = 0f;
-        canUseAbility = false;
-
+        lever.anchoredPosition = Vector2.zero;
+        
         if (selectedAbilityIndex >= 0)
         {
-            abilityUIArray[selectedAbilityIndex].GetComponent<IAbility>().Excute(racket);
+            abilityUIArray[selectedAbilityIndex].GetComponent<Ability>().Excute(racket);
+            leverImage.fillAmount = 0f;
+            canUseAbility = false;
+
+            abilityPanelImageArray[selectedAbilityIndex].color = originalColor;
+            selectedAbilityIndex = notSelectedAbilityIndex;
+
             StartCoroutine(CoroutineUpdateCooldown());
         }
     }
@@ -129,8 +134,13 @@ public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHan
     {
         if (selectedAbilityIndex == index) { return; }
 
+        if (selectedAbilityIndex != notSelectedAbilityIndex)
+        {
+            abilityPanelImageArray[selectedAbilityIndex].color = originalColor;
+        }
 
-        selectedAbilityIndex = index;
+        originalColor = abilityPanelImageArray[selectedAbilityIndex = index].color;
+        abilityPanelImageArray[selectedAbilityIndex].color = selectedColor;
     }
 
     private IEnumerator CoroutineUpdateCooldown()
