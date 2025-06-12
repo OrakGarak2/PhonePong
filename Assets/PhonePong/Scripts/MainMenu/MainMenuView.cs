@@ -8,7 +8,8 @@ namespace PhonePong.MainMenu
 {
     public class MainMenuView : MonoBehaviour, IMainMenuView
     {
-        [Header("메뉴 패널")]
+        [Header("메뉴 패널")] 
+        [SerializeField] private GameObject titlePanel;
         [SerializeField] private GameObject mainPanel;
         [SerializeField] private GameObject popupPanel;
         [SerializeField] private GameObject exitPanel;
@@ -39,6 +40,18 @@ namespace PhonePong.MainMenu
         [SerializeField] private Button selectClassicModeButton;
         [SerializeField] private Button selectAbilityModeButton;
 
+        [Header("크래딧")] 
+        [SerializeField] private GameObject creditPanel;
+        [SerializeField] private Transform seounghunParent;
+        [SerializeField] private Transform junsangParent;
+        [SerializeField] private Button seounghunButton;
+        [SerializeField] private Button junsangButton;
+
+        [Header("비밀")] 
+        [SerializeField] private Button imageButton;
+        [SerializeField] private Image normalImage;
+        [SerializeField] private Sprite secretImage;
+
         private MainMenuPresenter presenter;
 
         private void Awake()
@@ -55,8 +68,24 @@ namespace PhonePong.MainMenu
             selectPlayer2Button.onClick.AddListener(() => presenter.Execute(MenuCommand.LocalMulti));
             selectClassicModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectClassicMode));
             selectAbilityModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectAbilityMode));
+            
+            seounghunButton.onClick.AddListener(() => presenter.OnClickSeounghunImage());
+            junsangButton.onClick.AddListener(() => presenter.OnClickJunsangImage());
         }
 
+        #region Initialize
+
+        public void InitializeCreditPanel()
+        {
+            creditGroup.SetActive(false);
+            creditPanel.transform.localScale = new Vector3(0, 1, 1);
+            creditPanel.transform.localPosition = creditGroup.transform.localPosition;
+            creditPanel.transform.SetParent(creditGroup.transform);
+            creditPanel.SetActive(false);
+        }
+
+        #endregion
+        
         public void SetActiveAllPanels(bool isActive)
         {
             mainPanel.SetActive(isActive);
@@ -80,21 +109,71 @@ namespace PhonePong.MainMenu
             });
         }
 
-        public void Popup()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Popup(Action allCompleted)
+        public void Popup(GameObject obj, Action allCompleted)
         {
             // x
-            AnimationUtility.ScaleAxisAnimation(this, popupPanel, 0, 1, 0.5f, 0f, () =>
+            AnimationUtility.ScaleAxisAnimation(this, obj, 0, 1.2f, 0.25f, 0f, () =>
             {
                 // y
-                AnimationUtility.ScaleAxisAnimation(this, popupPanel, 0, 1, 0.5f, 0f, null, allCompleted);
+                AnimationUtility.ScaleAxisAnimation(this, obj, 0, 1.2f, 0.25f, 0f, null, () =>
+                {
+                    // x
+                    AnimationUtility.ScaleAxisAnimation(this, obj, 1.2f, 1f, 0.25f, 0f, () =>
+                    {
+                        // y
+                        AnimationUtility.ScaleAxisAnimation(this, obj, 1.2f, 1f, 0.25f, 0f, null, allCompleted);
+                    }, null, true);
+                });
             }, null, true);
         }
 
+        public void Closeup(GameObject obj, Action allCompleted)
+        {
+            // x
+            AnimationUtility.ScaleAxisAnimation(this, obj, 1, 0f, 0.25f, 0f, () =>
+            {
+                // y
+                AnimationUtility.ScaleAxisAnimation(this, obj, 1, 0f, 0.25f, 0f, null, allCompleted);
+            }, null, true);
+        }
+
+        public void SetParentOfCreditPanel(Developer developer)
+        {
+            creditPanel.transform.localScale = new Vector3(0, 1, 1);
+            creditPanel.SetActive(true);
+            creditPanel.transform.SetAsLastSibling(); 
+            
+            switch (developer)
+            {
+                case Developer.Junsang:
+                    junsangParent.SetAsLastSibling();
+                    break;
+                case Developer.Seounghun:
+                    seounghunParent.SetAsLastSibling();
+                    break;
+            }
+            
+            AnimationUtility.ScaleAxisAnimation(this, creditPanel, 0, 1f, 0.25f, 0f, null ,ShowSeonghunInfo, true);
+        }
+
+        private void ShowSeonghunInfo()
+        {
+            // AnimationUtility.MoveAnimation(this, (RectTransform)seounghunParent, 0.25f, 0f, new Vector2(-450, -200),
+            //     () =>
+            //     {
+            //         AnimationUtility.ScaleAxisAnimation(this, seounghunParent.gameObject, 1, 1.5f, 0.5f, 0f, () =>
+            //         {
+            //             AnimationUtility.ScaleAxisAnimation(this, seounghunParent.gameObject, 1, 1.5f, 0.5f, 0f, null ,null, false);
+            //         } ,null, true);
+            //     }, null);
+        }
+
+        public void LoadScene(string sceneName)
+        {
+            SceneLoader.LoadSceneAsync(this, sceneName);
+        }
+
+        public GameObject GetTitlePanel() => titlePanel;
         public GameObject GetMainPanel() => mainPanel;
         public GameObject GetPopupPanel() => popupPanel;
         public GameObject GetExitPanel() => exitPanel;
@@ -108,6 +187,43 @@ namespace PhonePong.MainMenu
         public GameObject GetSelectModeGroup() => selectModeGroup;
         public GameObject GetSettingsGroup() => settingsGroup;
         public GameObject GetCreditGroup() => creditGroup;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public void ChangeImageToSecretImage()
+        {
+            normalImage.sprite = secretImage;
+        }
     }
 }
 

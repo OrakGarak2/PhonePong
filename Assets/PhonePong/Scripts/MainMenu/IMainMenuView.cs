@@ -6,13 +6,20 @@ namespace PhonePong.MainMenu
 {
     public interface IMainMenuView
     {
+        // Initialize
+        void InitializeCreditPanel();
+        
         void SetActiveAllPanels(bool isActive);
         void SetActiveAllGroups(bool isActive);
         void OnStartMenu();
-
-        void Popup();
+        
+        void Popup(GameObject obj, Action allCompleted);
+        void Closeup(GameObject obj, Action allCompleted);
+        void SetParentOfCreditPanel(Developer developer);
+        void LoadScene(string sceneName);
         
         // Panel
+        GameObject GetTitlePanel();
         GameObject GetMainPanel();
         GameObject GetPopupPanel();
         GameObject GetExitPanel();
@@ -28,6 +35,28 @@ namespace PhonePong.MainMenu
         GameObject GetSelectModeGroup();
         GameObject GetSettingsGroup();
         GameObject GetCreditGroup();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        void ChangeImageToSecretImage();
     }
 }
 

@@ -21,6 +21,12 @@ namespace PhonePong.MainMenu
         SelectClassicMode,
         SelectAbilityMode
     }
+
+    public enum Developer
+    {
+        Junsang,
+        Seounghun
+    }
     
     public class MainMenuPresenter
     {
@@ -56,6 +62,7 @@ namespace PhonePong.MainMenu
             view.SetActiveAllPanels(false);
             view.SetActiveAllGroups(false);
             view.GetMainPanel().SetActive(true);
+            view.InitializeCreditPanel();
             
             // FadeOut
             view.OnStartMenu();
@@ -68,6 +75,22 @@ namespace PhonePong.MainMenu
                 commandResult.Execute();
             }
         }
+        public void OnClickSeounghunImage()
+        {
+            view.SetParentOfCreditPanel(Developer.Seounghun);
+            
+            model.SecretCountUp();
+
+            if (model.secretCount >= 5)
+            {
+                view.ChangeImageToSecretImage();
+            }
+        }
+
+        public void OnClickJunsangImage()
+        {
+            view.SetParentOfCreditPanel(Developer.Junsang);
+        }
 
         #region Commands
 
@@ -77,6 +100,8 @@ namespace PhonePong.MainMenu
             
             view.GetPopupPanel().SetActive(true);
             view.GetSelectPlayersGroup().SetActive(true);
+                
+            view.Popup(view.GetPopupPanel(), null);
         }
 
         private void SettingsCommand()
@@ -85,6 +110,8 @@ namespace PhonePong.MainMenu
             
             view.GetPopupPanel().SetActive(true);
             view.GetSettingsGroup().SetActive(true);
+            
+            view.Popup(view.GetPopupPanel(), null);
         }
 
         private void CreditCommand()
@@ -93,6 +120,8 @@ namespace PhonePong.MainMenu
             
             view.GetPopupPanel().SetActive(true);
             view.GetCreditGroup().SetActive(true);
+            
+            view.Popup(view.GetPopupPanel(), null);
         }
 
         private void ExitCommand()
@@ -100,32 +129,38 @@ namespace PhonePong.MainMenu
             model.MenuCommand = MenuCommand.Exit;
             
             view.GetExitPanel().SetActive(true);
+            
+            view.Popup(view.GetExitPanel(), null);
         }
 
         private void CloseCommand()
         {
-            switch (model.MenuCommand)
+            view.Closeup(view.GetPopupPanel(), () =>
             {
-                case MenuCommand.Start:
-                    model.MenuCommand = MenuCommand.None;
-                    view.GetSelectPlayersGroup().SetActive(false);
-                    view.GetSelectModeGroup().SetActive(false);
-                    view.GetPopupPanel().SetActive(false);
-                    break;
-                case MenuCommand.Settings:
-                    model.MenuCommand = MenuCommand.None;
-                    view.GetSettingsGroup().SetActive(false);
-                    view.GetPopupPanel().SetActive(false);
-                    break;
-                case MenuCommand.Credit:
-                    model.MenuCommand = MenuCommand.None;
-                    view.GetCreditGroup().SetActive(false);
-                    view.GetPopupPanel().SetActive(false);
-                    break;
-                default:
-                    Debug.LogError("없는 메뉴 타입 입니다.");
-                    break;
-            }
+                switch (model.MenuCommand)
+                {
+                    case MenuCommand.Start:
+                        model.MenuCommand = MenuCommand.None;
+                        view.GetSelectPlayersGroup().SetActive(false);
+                        view.GetSelectModeGroup().SetActive(false);
+                        view.GetPopupPanel().SetActive(false);
+                        break;
+                    case MenuCommand.Settings:
+                        model.MenuCommand = MenuCommand.None;
+                        view.GetSettingsGroup().SetActive(false);
+                        view.GetPopupPanel().SetActive(false);
+                        break;
+                    case MenuCommand.Credit:
+                        model.MenuCommand = MenuCommand.None;
+                        view.InitializeCreditPanel();
+                        view.GetCreditGroup().SetActive(false);
+                        view.GetPopupPanel().SetActive(false);
+                        break;
+                    default:
+                        Debug.LogError("없는 메뉴 타입 입니다.");
+                        break;
+                }
+            });
         }
 
         private void YesCommand()
@@ -137,7 +172,10 @@ namespace PhonePong.MainMenu
         {
             model.MenuCommand = MenuCommand.None;
             
-            view.GetExitPanel().SetActive(false);
+            view.Closeup(view.GetExitPanel(), () =>
+            {
+                view.GetExitPanel().SetActive(false);
+            });
         }
         
         private void LocalMultiCommand()
@@ -151,6 +189,7 @@ namespace PhonePong.MainMenu
         {
             // 로딩창 -> 클래식 모드 씬으로 이동
             Debug.Log("클래식 모드로 이동!");
+            view.LoadScene(SceneName.ClassicModeScene);
         }
 
         private void SelectAbilityModeGroup()

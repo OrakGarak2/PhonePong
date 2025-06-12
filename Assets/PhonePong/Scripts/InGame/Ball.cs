@@ -49,7 +49,7 @@ public class Ball : MonoBehaviour
     {
         ResetSpeed();
         rb2D.linearVelocity = Vector2.zero;
-        transform.position = Vector2.zero;
+        rb2D.position = Vector2.zero;
 
         yield return new WaitForSeconds(resetWaitTime);
 
