@@ -1327,9 +1327,9 @@ MonoBehaviour:
   currentSpeed: 0
   startDirectionRangeX: 2.09
   startDirectionRangeY: 0.9
-  dontDestroyOnGoal: 0
+  dontDestroyOnGoal: 1
   spriteRenderer: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 0}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &775655094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,6 +2041,7 @@ GameObject:
   - component: {fileID: 1406695443}
   - component: {fileID: 1406695445}
   - component: {fileID: 1406695444}
+  - component: {fileID: 1406695446}
   m_Layer: 5
   m_Name: Virtual Joystick
   m_TagString: Untagged
@@ -2106,6 +2107,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406695442}
   m_CullTransparentMesh: 1
+--- !u!114 &1406695446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406695442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6169ea84fa6887b4a94bc2eb56bfbdf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityUI: {fileID: 2124876378}
+  abilityUIArray:
+  - {fileID: 1167731562}
+  - {fileID: 775655095}
+  - {fileID: 461417362}
+  - {fileID: 1423849758}
+  abilityPanelImageArray: []
+  selectedColor: {r: 0.28353322, g: 1, b: 0, a: 0.74509805}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  abilityUIDirectionArray: []
+  abilityCooldown: 2
+  canUseAbility: 1
+  selectedAbilityIndex: -1
+  rectTransform: {fileID: 0}
+  lever: {fileID: 1237494554}
+  leverImage: {fileID: 0}
+  leverRange: 100
+  playerEnum: 0
+  racket: {fileID: 362658513}
 --- !u!1 &1423849757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3221,7 +3253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2124876379
 RectTransform:
   m_ObjectHideFlags: 0
