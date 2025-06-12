@@ -11,7 +11,7 @@ public class Racket : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2D;
     [SerializeField] private float speed;
 
-    private void Start()
+    protected virtual void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
     }
