@@ -9,7 +9,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // PhonePong
-using PhonePong.InGameInterface;
 using PhonePong.Enum;
 
 public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -44,7 +43,7 @@ public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHan
     }
 
     [Header("라켓")]
-    [SerializeField] private Racket racket;
+    [SerializeField] private AbilityRacket racket;
 
     void Start()
     {
@@ -103,7 +102,7 @@ public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHan
         
         if (selectedAbilityIndex >= 0)
         {
-            abilityUIArray[selectedAbilityIndex].GetComponent<IAbility>().Excute(racket);
+            abilityUIArray[selectedAbilityIndex].GetComponent<Ability>().Excute(racket);
             leverImage.fillAmount = 0f;
             canUseAbility = false;
 
