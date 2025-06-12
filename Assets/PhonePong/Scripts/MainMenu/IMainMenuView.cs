@@ -9,6 +9,8 @@ namespace PhonePong.MainMenu
         void SetActiveAllPanels(bool isActive);
         void SetActiveAllGroups(bool isActive);
         void OnStartMenu();
+
+        void Popup();
         
         // Panel
         GameObject GetMainPanel();

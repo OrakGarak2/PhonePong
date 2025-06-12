@@ -17,8 +17,7 @@ namespace PhonePong.MainMenu
         Close,
         Yes,
         No,
-        Select1P,
-        Select2P,
+        LocalMulti,
         SelectClassicMode,
         SelectAbilityMode
     }
@@ -49,8 +48,7 @@ namespace PhonePong.MainMenu
             commands[MenuCommand.Close] = new DelegateCommand(CloseCommand);
             commands[MenuCommand.Yes] = new DelegateCommand(YesCommand);
             commands[MenuCommand.No] = new DelegateCommand(NoCommand);
-            commands[MenuCommand.Select1P] = new DelegateCommand(Select1PlayersGroup);
-            commands[MenuCommand.Select2P] = new DelegateCommand(Select2PlayersGroup);
+            commands[MenuCommand.LocalMulti] = new DelegateCommand(LocalMultiCommand);
             commands[MenuCommand.SelectClassicMode] = new DelegateCommand(SelectClassicModeGroup);
             commands[MenuCommand.SelectAbilityMode] = new DelegateCommand(SelectAbilityModeGroup);
             
@@ -141,13 +139,8 @@ namespace PhonePong.MainMenu
             
             view.GetExitPanel().SetActive(false);
         }
-
-        private void Select1PlayersGroup()
-        {
-            // 나중에 추가 할 1인용
-        }
         
-        private void Select2PlayersGroup()
+        private void LocalMultiCommand()
         {
             view.GetSelectPlayersGroup().SetActive(false);
             view.GetPopupPanel().SetActive(true);
