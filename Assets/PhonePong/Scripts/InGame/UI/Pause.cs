@@ -12,7 +12,6 @@ public class Pause : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private TMP_Text countDownText;
     
-    private int countDown;
     private bool isPause;
 
     private void Awake()
@@ -24,7 +23,6 @@ public class Pause : MonoBehaviour
 
     private void Init()
     {
-        countDown = 3;
         isPause = false;
         pausePanel.SetActive(false);
         pauseButton.image.sprite = unpauseSprite;
@@ -47,9 +45,9 @@ public class Pause : MonoBehaviour
         
     }
 
-    private void CountDown()
+    private void CountDown(string text)
     {
-        countDownText.text = countDown.ToString();
+        countDownText.text = text;
         
         AnimationUtility.FadeAnimation(this, countDownText, Color.white, 0, 1, 0.5f, 0, () =>
         {
@@ -65,10 +63,7 @@ public class Pause : MonoBehaviour
                 {
                     AnimationUtility.ScaleAxisAnimation(this, countDownText.gameObject, 1, 0, 0.5f, 0, null, null);
                 }, null, true);
-            }, () =>
-            {
-                --countDown;
-            });
+            }, null);
         });
     }
 
@@ -77,11 +72,11 @@ public class Pause : MonoBehaviour
         pauseButton.interactable = false;
         pausePanel.SetActive(false);
         
-        CountDown();
+        CountDown("3");
         yield return new WaitForSecondsRealtime(1f);
-        CountDown();
+        CountDown("2");
         yield return new WaitForSecondsRealtime(1f);
-        CountDown();
+        CountDown("1");
         yield return new WaitForSecondsRealtime(1f);
         
         Time.timeScale = 1;
@@ -89,6 +84,5 @@ public class Pause : MonoBehaviour
         isPause = false;
         pauseButton.interactable = true;
         pauseButton.image.sprite = unpauseSprite;
-        countDown = 3;
     }
 }
