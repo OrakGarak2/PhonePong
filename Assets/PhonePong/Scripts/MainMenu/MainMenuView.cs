@@ -52,8 +52,7 @@ namespace PhonePong.MainMenu
             closeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.Close));
             yesButton.onClick.AddListener(() => presenter.Execute(MenuCommand.Yes));
             noButton.onClick.AddListener(() => presenter.Execute(MenuCommand.No));
-            selectPlayer1Button.onClick.AddListener(() => presenter.Execute(MenuCommand.Select1P));
-            selectPlayer2Button.onClick.AddListener(() => presenter.Execute(MenuCommand.Select2P));
+            selectPlayer2Button.onClick.AddListener(() => presenter.Execute(MenuCommand.LocalMulti));
             selectClassicModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectClassicMode));
             selectAbilityModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectAbilityMode));
         }
@@ -79,6 +78,21 @@ namespace PhonePong.MainMenu
             {
                 fadePanel.gameObject.SetActive(false);
             });
+        }
+
+        public void Popup()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Popup(Action allCompleted)
+        {
+            // x
+            AnimationUtility.ScaleAxisAnimation(this, popupPanel, 0, 1, 0.5f, 0f, () =>
+            {
+                // y
+                AnimationUtility.ScaleAxisAnimation(this, popupPanel, 0, 1, 0.5f, 0f, null, allCompleted);
+            }, null, true);
         }
 
         public GameObject GetMainPanel() => mainPanel;
