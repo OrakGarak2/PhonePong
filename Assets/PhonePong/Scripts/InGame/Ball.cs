@@ -11,12 +11,8 @@ using PhonePong.Layer;
 
 public class Ball : MonoBehaviour
 {
-    [Header("컴포넌트")]
+    [Header("물리")]
     [SerializeField] private Rigidbody2D rb2D;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-
-    [Header("기존 색상")]
-    [SerializeField] private Color originalColor;
 
     [Header("이동속도")]
     [SerializeField] private float originalSpeed;
@@ -26,17 +22,16 @@ public class Ball : MonoBehaviour
     [SerializeField][Range(0, 10f)] private float startDirectionRangeX;
     [SerializeField][Range(0, 10f)] private float startDirectionRangeY;
 
-    [Header("기본 공")]
-    [SerializeField] private bool dontDestroyOnGoal;
+    [Header("파괴 여부")]
+    [SerializeField] protected bool dontDestroyOnGoal;
     public bool DontDestroyOnGoal => dontDestroyOnGoal;
 
-    private const int barLayer = LayerDatas.barLayer;
+    private const int racketLayer = LayerDatas.racketLayer;
     private const float resetWaitTime = 1f;
 
-    private void Start()
+    protected virtual void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         SetDontDestroyOnGoal();
 
@@ -46,14 +41,13 @@ public class Ball : MonoBehaviour
         Reset();
     }
 
-    public virtual void SetDontDestroyOnGoal() => dontDestroyOnGoal = true;
+    protected virtual void SetDontDestroyOnGoal() => dontDestroyOnGoal = true;
 
     public void Reset() => StartCoroutine(CoroutineReset());
 
-    public virtual IEnumerator CoroutineReset()
+    protected virtual IEnumerator CoroutineReset()
     {
         ResetSpeed();
-        ResetColor();
         rb2D.linearVelocity = Vector2.zero;
         transform.position = Vector2.zero;
 
@@ -69,9 +63,7 @@ public class Ball : MonoBehaviour
     }
 
     public void ResetSpeed() => currentSpeed = originalSpeed;
-    public void ResetColor() => spriteRenderer.color = originalColor;
-    public void ChangeColor(Color newColor) => spriteRenderer.color = newColor;
-
+    
     private float HitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight)
     {
         return (ballPos.y - racketPos.y) / racketHeight;
@@ -79,18 +71,20 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.layer != barLayer) { return; }
-
-        // 공이 맞은 방향을 계산해서 y 방향 벡터를 구한다.
-        float y = HitFactor(transform.position,
+        if (col.gameObject.layer == racketLayer)
+        {
+            // 공이 맞은 방향을 계산해서 y 방향 벡터를 구한다.
+            float y = HitFactor(transform.position,
                                 col.transform.position,
                                 col.collider.bounds.size.y);
 
-        // 공과 라켓의 상대 속도를 계산해서 x 방향 벡터를 구한다.
-        float x = col.relativeVelocity.x > 0 ? 1 : -1;
+            // 공과 라켓의 상대 속도를 계산해서 x 방향 벡터를 구한다.
+            float x = col.relativeVelocity.x > 0 ? 1 : -1;
 
-        Vector2 dir = new Vector2(x, y).normalized;
+            rb2D.linearVelocity = new Vector2(x, y);
 
-        rb2D.linearVelocity = dir * currentSpeed;
+        }
+
+        rb2D.linearVelocity = rb2D.linearVelocity.normalized * currentSpeed;
     }
 }

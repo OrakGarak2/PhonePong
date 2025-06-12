@@ -9,7 +9,7 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class MoveVirtualJoystick : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private RectTransform lever;
@@ -25,21 +25,16 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         leverRange = rectTransform.sizeDelta.y * 0.5f;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        // TODO: 나중에도 안쓰면 삭제할 것
-    }
-
     public void OnDrag(PointerEventData eventData)
     {
         float newLeverPosY = eventData.position.y - rectTransform.position.y;
-        float signNewLeverPosY = Math.Sign(newLeverPosY);
+        float signNewLeverPosY = Math.Sign(newLeverPosY); // 현재 조이스틱을 당기고 있는 방향을 구한다.(1이면 위, -1이면 아래)
 
         newLeverPosY = Math.Abs(newLeverPosY) < leverRange ? newLeverPosY : signNewLeverPosY * leverRange;
 
         lever.anchoredPosition = new Vector2(lever.anchoredPosition.x, newLeverPosY);
 
-        if (signNewLeverPosY != signLeverPosY)
+        if (signNewLeverPosY != signLeverPosY) // 조이스틱을 당기는 방향이 바뀔 때 호출 
         {
             racket.Move(signLeverPosY = signNewLeverPosY);
         }
