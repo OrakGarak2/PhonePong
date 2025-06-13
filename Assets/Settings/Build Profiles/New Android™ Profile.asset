@@ -21,7 +21,13 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
+    m_path: Assets/PhonePong/Scenes/00_Splash.unity
+  - m_enabled: 1
+    m_path: Assets/PhonePong/Scenes/01_MainMenu.unity
+  - m_enabled: 1
     m_path: Assets/PhonePong/Scenes/Classic Pong.unity
+  - m_enabled: 1
+    m_path: Assets/PhonePong/Scenes/Ability Pong.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []

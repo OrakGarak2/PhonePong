@@ -188,14 +188,13 @@ namespace PhonePong.MainMenu
         private void SelectClassicModeGroup()
         {
             // 로딩창 -> 클래식 모드 씬으로 이동
-            Debug.Log("클래식 모드로 이동!");
             view.LoadScene(SceneName.ClassicModeScene);
         }
 
         private void SelectAbilityModeGroup()
         {
             // 로딩창 -> 능력자 모드 씬으로 이동
-            Debug.Log("능력자 모드로 이동!");
+            view.LoadScene(SceneName.AbilityModeScene);
         }
 
         #endregion

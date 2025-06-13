@@ -1,7 +1,5 @@
 // System
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 
 // Unity
 using UnityEngine;
@@ -13,7 +11,7 @@ public class Score : MonoBehaviour
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private RectTransform win;
     [SerializeField] private int currentScore;
-    const int maxScore = 15;
+    const int maxScore = 10;
 
     private void Start()
     {

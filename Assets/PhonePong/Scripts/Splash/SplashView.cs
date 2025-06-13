@@ -11,6 +11,11 @@ namespace PhonePong.Splash
     {
         [SerializeField] private Image panel;
 
+        private void Awake()
+        {
+            Application.targetFrameRate = 60;
+        }
+
         private void Start()
         {
             OnFadeOutPanel();
