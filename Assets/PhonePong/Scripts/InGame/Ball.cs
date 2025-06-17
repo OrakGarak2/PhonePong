@@ -46,7 +46,11 @@ public class Ball : MonoBehaviour
 
     protected virtual void SetDontDestroyOnGoal() => dontDestroyOnGoal = true;
 
-    public void Reset() => StartCoroutine(CoroutineReset());
+    public void Reset()
+    {
+        StopAllCoroutines();
+        StartCoroutine(CoroutineReset());
+    }
 
     protected virtual IEnumerator CoroutineReset()
     {
@@ -85,13 +89,12 @@ public class Ball : MonoBehaviour
                                 col.collider.bounds.size.y);
 
             // 공과 라켓의 상대 속도를 계산해서 x 방향 벡터를 구한다.
-            float x = col.relativeVelocity.x > 0 ? 1 : -1;
-
-            rb2D.linearVelocity = new Vector2(x, y);
-
+            float x = transform.position.x < col.relativeVelocity.x ? 1f : -1f;
+            
             acceleration += accelerationIncreaseRate;
+            rb2D.linearVelocity = new Vector2(x, y).normalized * CurrentSpeed;
         }
 
-        rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
+        //rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
     }
 }
