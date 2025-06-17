@@ -14,7 +14,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     
     [Header("카운트 다운")]
-    [SerializeField] private TMP_Text countDownText;
+    [SerializeField] private TMP_Text[] countDownTexts;
     [SerializeField] private string[] countDownTextGroup = new [] {"1", "2", "3"};
 
     private void Awake()
@@ -59,7 +59,7 @@ public class PauseManager : MonoBehaviour
         });
     }
 
-    private void CountDown(string text)
+    private void CountDown(TMP_Text countDownText, string text)
     {
         countDownText.text = text;
         
@@ -91,7 +91,10 @@ public class PauseManager : MonoBehaviour
 
         while (count >= 0)
         {
-            CountDown(countDownTextGroup[count]);
+            foreach (var t in countDownTexts)
+            {
+                CountDown(t, countDownTextGroup[count]);
+            }
             yield return new WaitForSecondsRealtime(1f);
             count--;
         }

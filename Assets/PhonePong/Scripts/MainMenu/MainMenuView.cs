@@ -28,6 +28,10 @@ namespace PhonePong.MainMenu
         [SerializeField] private GameObject selectModeGroup;
         [SerializeField] private GameObject settingsGroup;
         [SerializeField] private GameObject creditGroup;
+        
+        [Header("설정")]
+        [SerializeField] private Toggle horizontalModeToggle;
+        [SerializeField] private Toggle verticalModeToggle;
 
         [Header("종료 패널")] 
         [SerializeField] private Button yesButton;
@@ -69,12 +73,27 @@ namespace PhonePong.MainMenu
             selectClassicModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectClassicMode));
             selectAbilityModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectAbilityMode));
             
+            horizontalModeToggle.onValueChanged.AddListener((c) =>
+            {
+                presenter.ChangeToHorizontalMode();
+            });
+            verticalModeToggle.onValueChanged.AddListener((c) =>
+            {
+                presenter.ChangeToVerticalMode();
+            });
+            
             seounghunButton.onClick.AddListener(() => presenter.OnClickSeounghunImage());
             junsangButton.onClick.AddListener(() => presenter.OnClickJunsangImage());
         }
 
         #region Initialize
 
+        public void InitializeSettingPanel()
+        {
+            horizontalModeToggle.isOn = true;
+            verticalModeToggle.isOn = false;
+        }
+        
         public void InitializeCreditPanel()
         {
             creditGroup.SetActive(false);
@@ -179,39 +198,10 @@ namespace PhonePong.MainMenu
         public GameObject GetSelectModeGroup() => selectModeGroup;
         public GameObject GetSettingsGroup() => settingsGroup;
         public GameObject GetCreditGroup() => creditGroup;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        public Toggle GetHorizontalModeToggle() => horizontalModeToggle;
+        public Toggle GetVerticalModeToggle() => verticalModeToggle;
+        
         public void ChangeImageToSecretImage()
         {
             normalImage.sprite = secretImage;
