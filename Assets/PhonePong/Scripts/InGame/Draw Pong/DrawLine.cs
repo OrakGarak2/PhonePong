@@ -20,6 +20,7 @@ public class DrawLine : MonoBehaviour
     [SerializeField] private int layerBitMask;
 
     private const float nextLinePointMinDistance = 0.15f;
+    private const int maxTouchCount = 4;
 
     [Header("게이지")]
     [SerializeField] private Image lineGauge;
@@ -36,44 +37,50 @@ public class DrawLine : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && CheckPointInZone(out Vector2 pointPos))
+        if (CheckPointInZone(out Vector2 pointPos))
         {
-            CreateLine(pointPos);
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            if (currentLineRacket == null) { return; }
-
-            if (CheckPointInZone(out Vector2 nextPointPos))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (lineGaugeAmount > 0f && Vector2.Distance(nextPointPos, pointPosList[pointPosList.Count - 1]) > nextLinePointMinDistance)
+                CreateLine(pointPos);
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                if (currentLineRacket == null) { return; }
+
+                if (lineGaugeAmount > 0f && Vector2.Distance(pointPos, pointPosList[pointPosList.Count - 1]) > nextLinePointMinDistance)
                 {
-                    UpdateLine(nextPointPos);
+                    UpdateLine(pointPos);
                 }
             }
-            else
-            {
-                DeleteLine();
-            }
         }
-        else if (Input.GetMouseButtonUp(0))
+        else
         {
             DeleteLine();
-        }
-        else if (lineGaugeAmount != lineGaugeMaxAmount)
-        {
-            UpdateLineGauge(lineGaugeAmount + lineGaugeIncreaseRate);
+
+            if (lineGaugeAmount != lineGaugeMaxAmount)
+            {
+                UpdateLineGauge(lineGaugeAmount + lineGaugeIncreaseRate);
+            }
         }
     }
 
     private bool CheckPointInZone(out Vector2 pointPos)
     {
-        pointPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            if (i >= maxTouchCount) break;
 
-        Debug.Log($"Physics2D.OverlapPoint(pointPos, thisLayerMask): {Physics2D.OverlapPoint(pointPos, layerBitMask) != null}");
-        Collider2D hit = Physics2D.OverlapPoint(pointPos, layerBitMask);
+            pointPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+            Collider2D hit = Physics2D.OverlapPoint(pointPos, layerBitMask);
 
-        return hit != null ? hit.gameObject == gameObject : false;
+            if (hit != null ? hit.gameObject == gameObject : false)
+            {
+                return true;
+            }
+        }
+
+        pointPos = Vector2.zero;
+        return false;
     }
 
     private void CreateLine(Vector2 pointPos)
