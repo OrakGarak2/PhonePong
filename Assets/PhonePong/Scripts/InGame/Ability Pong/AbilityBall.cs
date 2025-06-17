@@ -28,7 +28,8 @@ public class AbilityBall : Ball
     public void ResetColor() => spriteRenderer.color = originalColor;
     public void MultiplySpeed(float speedMultiple)
     {
-        rb2D.linearVelocity *= speedMultiple;
+        currentSpeed *= speedMultiple;
+        rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
     }
     protected override IEnumerator CoroutineReset()
     {

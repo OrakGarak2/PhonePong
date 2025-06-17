@@ -17,6 +17,9 @@ public class Ball : MonoBehaviour
     [Header("이동속도")]
     [SerializeField] private float originalSpeed;
     [SerializeField] protected float currentSpeed;
+    [SerializeField] protected float acceleration = 1f;
+    protected const float accelerationIncreaseRate = 0.05f;
+    public float CurrentSpeed { get { return currentSpeed * acceleration; } }
 
     [Header("초기 값 설정")]
     [SerializeField][Range(0, 10f)] private float startDirectionRangeX;
@@ -59,11 +62,14 @@ public class Ball : MonoBehaviour
 
         Vector2 startDirection = new Vector2(startDirectionX, startDirectionY).normalized;
 
-        rb2D.linearVelocity = startDirection * currentSpeed;
+        rb2D.linearVelocity = startDirection * CurrentSpeed;
     }
 
-    public void ResetSpeed() => currentSpeed = originalSpeed;
-    
+    public void ResetSpeed()
+    {
+        currentSpeed = originalSpeed;
+        acceleration = 1f;
+    }
     private float HitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight)
     {
         return (ballPos.y - racketPos.y) / racketHeight;
@@ -83,8 +89,9 @@ public class Ball : MonoBehaviour
 
             rb2D.linearVelocity = new Vector2(x, y);
 
+            acceleration += accelerationIncreaseRate;
         }
 
-        rb2D.linearVelocity = rb2D.linearVelocity.normalized * currentSpeed;
+        rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
     }
 }

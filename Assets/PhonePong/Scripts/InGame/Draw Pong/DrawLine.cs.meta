@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: a617ac739af39c74186a2c1f8ac4bd6c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - lineRacketPrefab: {fileID: 1509365351930019113, guid: 7e21157d49fc0d44d9ce42ead7f4570c, type: 3}
+  - currentLineRacket: {instanceID: 0}
+  - lineRenderer: {instanceID: 0}
+  - edgeCollider2D: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
