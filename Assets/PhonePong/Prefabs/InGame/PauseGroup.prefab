@@ -518,7 +518,8 @@ MonoBehaviour:
   restartButton: {fileID: 8246465200000131010}
   exitButton: {fileID: 4740476740797379127}
   pausePanel: {fileID: 2798797264616871432}
-  countDownText: {fileID: 7425350626959157886}
+  countDownTexts:
+  - {fileID: 7425350626959157886}
   countDownTextGroup:
   - 1
   - 2

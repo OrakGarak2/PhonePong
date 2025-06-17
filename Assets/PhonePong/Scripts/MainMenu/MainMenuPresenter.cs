@@ -19,7 +19,8 @@ namespace PhonePong.MainMenu
         No,
         LocalMulti,
         SelectClassicMode,
-        SelectAbilityMode
+        SelectAbilityMode,
+        SelectDrawMode
     }
 
     public enum Orientation
@@ -63,6 +64,7 @@ namespace PhonePong.MainMenu
             commands[MenuCommand.LocalMulti] = new DelegateCommand(LocalMultiCommand);
             commands[MenuCommand.SelectClassicMode] = new DelegateCommand(SelectClassicModeGroup);
             commands[MenuCommand.SelectAbilityMode] = new DelegateCommand(SelectAbilityModeGroup);
+            commands[MenuCommand.SelectDrawMode] = new DelegateCommand(SelectDrawModeGroup);
             
             // Setting
             view.SetActiveAllPanels(false);
@@ -239,6 +241,20 @@ namespace PhonePong.MainMenu
                     break;
                 case Orientation.Vertical:
                     view.LoadScene(SceneName.VerticalAbilityModeScene);
+                    break;
+            }
+        }
+
+        private void SelectDrawModeGroup()
+        {
+            // 로딩창 -> 그리기 모드 씬으로 이동
+            switch (model.Orientation)
+            {
+                case Orientation.Horizontal:
+                    view.LoadScene(SceneName.DrawModeScene);
+                    break;
+                case Orientation.Vertical:
+                    view.LoadScene(SceneName.VerticalDrawModeScene);
                     break;
             }
         }
