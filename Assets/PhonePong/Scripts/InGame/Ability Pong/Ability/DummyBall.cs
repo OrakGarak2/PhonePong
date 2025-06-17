@@ -19,7 +19,7 @@ public class DummyBall : Ball
 
     public void SetVelocity(Vector2 velocity)
     {
-        rb2D.linearVelocity = velocity.normalized * currentSpeed;
+        rb2D.linearVelocity = velocity.normalized * CurrentSpeed;
     }
 
     protected override void OnCollisionEnter2D(Collision2D col)
@@ -30,7 +30,7 @@ public class DummyBall : Ball
         }
         else
         {
-            rb2D.linearVelocity = rb2D.linearVelocity.normalized * currentSpeed;
+            rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
         }
     }
 }

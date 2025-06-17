@@ -980,6 +980,7 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   originalSpeed: 10
   currentSpeed: 0
+  acceleration: 1
   startDirectionRangeX: 3.16
   startDirectionRangeY: 0.85
   dontDestroyOnGoal: 0

@@ -29,7 +29,7 @@ public class AbilityBall : Ball
     public void MultiplySpeed(float speedMultiple)
     {
         currentSpeed *= speedMultiple;
-        rb2D.linearVelocity = rb2D.linearVelocity.normalized * currentSpeed;
+        rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
     }
     protected override IEnumerator CoroutineReset()
     {
