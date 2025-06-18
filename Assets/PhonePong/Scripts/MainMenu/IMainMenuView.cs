@@ -8,6 +8,7 @@ namespace PhonePong.MainMenu
     {
         // Initialize
         void InitializeCreditPanel();
+        void InitializeSettingPanel();
         
         void SetActiveAllPanels(bool isActive);
         void SetActiveAllGroups(bool isActive);
@@ -36,11 +37,9 @@ namespace PhonePong.MainMenu
         GameObject GetSettingsGroup();
         GameObject GetCreditGroup();
 
-
-
-
-
-
+        // Toggle
+        Toggle GetHorizontalModeToggle();
+        Toggle GetVerticalModeToggle();
 
 
 

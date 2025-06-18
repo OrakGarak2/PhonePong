@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utils.Animation;
 
@@ -27,18 +28,22 @@ namespace PhonePong.MainMenu
         [SerializeField] private GameObject selectModeGroup;
         [SerializeField] private GameObject settingsGroup;
         [SerializeField] private GameObject creditGroup;
+        
+        [Header("설정")]
+        [SerializeField] private Toggle horizontalModeToggle;
+        [SerializeField] private Toggle verticalModeToggle;
 
         [Header("종료 패널")] 
         [SerializeField] private Button yesButton;
         [SerializeField] private Button noButton;
-
+        
         [Header("플레이어 선택")] 
-        [SerializeField] private Button selectPlayer1Button;
-        [SerializeField] private Button selectPlayer2Button;
+        [SerializeField] private Button localMultiButton;
         
         [Header("모드 선택")]
         [SerializeField] private Button selectClassicModeButton;
         [SerializeField] private Button selectAbilityModeButton;
+        [SerializeField] private Button selectDrawModeButton;
 
         [Header("크래딧")] 
         [SerializeField] private GameObject creditPanel;
@@ -65,9 +70,19 @@ namespace PhonePong.MainMenu
             closeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.Close));
             yesButton.onClick.AddListener(() => presenter.Execute(MenuCommand.Yes));
             noButton.onClick.AddListener(() => presenter.Execute(MenuCommand.No));
-            selectPlayer2Button.onClick.AddListener(() => presenter.Execute(MenuCommand.LocalMulti));
+            localMultiButton.onClick.AddListener(() => presenter.Execute(MenuCommand.LocalMulti));
             selectClassicModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectClassicMode));
             selectAbilityModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectAbilityMode));
+            selectDrawModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectDrawMode));
+            
+            horizontalModeToggle.onValueChanged.AddListener((c) =>
+            {
+                presenter.ChangeToHorizontalMode();
+            });
+            verticalModeToggle.onValueChanged.AddListener((c) =>
+            {
+                presenter.ChangeToVerticalMode();
+            });
             
             seounghunButton.onClick.AddListener(() => presenter.OnClickSeounghunImage());
             junsangButton.onClick.AddListener(() => presenter.OnClickJunsangImage());
@@ -75,6 +90,12 @@ namespace PhonePong.MainMenu
 
         #region Initialize
 
+        public void InitializeSettingPanel()
+        {
+            horizontalModeToggle.isOn = true;
+            verticalModeToggle.isOn = false;
+        }
+        
         public void InitializeCreditPanel()
         {
             creditGroup.SetActive(false);
@@ -112,18 +133,10 @@ namespace PhonePong.MainMenu
         public void Popup(GameObject obj, Action allCompleted)
         {
             // x
-            AnimationUtility.ScaleAxisAnimation(this, obj, 0, 1.2f, 0.25f, 0f, () =>
+            AnimationUtility.ScaleAxisAnimation(this, obj, 0, 1f, 0.25f, 0f, () =>
             {
                 // y
-                AnimationUtility.ScaleAxisAnimation(this, obj, 0, 1.2f, 0.25f, 0f, null, () =>
-                {
-                    // x
-                    AnimationUtility.ScaleAxisAnimation(this, obj, 1.2f, 1f, 0.25f, 0f, () =>
-                    {
-                        // y
-                        AnimationUtility.ScaleAxisAnimation(this, obj, 1.2f, 1f, 0.25f, 0f, null, allCompleted);
-                    }, null, true);
-                });
+                AnimationUtility.ScaleAxisAnimation(this, obj, 0, 1f, 0.25f, 0f, null, allCompleted);
             }, null, true);
         }
 
@@ -187,39 +200,10 @@ namespace PhonePong.MainMenu
         public GameObject GetSelectModeGroup() => selectModeGroup;
         public GameObject GetSettingsGroup() => settingsGroup;
         public GameObject GetCreditGroup() => creditGroup;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        public Toggle GetHorizontalModeToggle() => horizontalModeToggle;
+        public Toggle GetVerticalModeToggle() => verticalModeToggle;
+        
         public void ChangeImageToSecretImage()
         {
             normalImage.sprite = secretImage;

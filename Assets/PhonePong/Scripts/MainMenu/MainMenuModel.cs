@@ -5,6 +5,7 @@ namespace PhonePong.MainMenu
     public class MainMenuModel
     {
         public MenuCommand MenuCommand = MenuCommand.None;
+        public Orientation Orientation = Orientation.Horizontal;
 
         public int secretCount { get; private set; }
 

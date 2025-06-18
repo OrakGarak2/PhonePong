@@ -19,7 +19,14 @@ namespace PhonePong.MainMenu
         No,
         LocalMulti,
         SelectClassicMode,
-        SelectAbilityMode
+        SelectAbilityMode,
+        SelectDrawMode
+    }
+
+    public enum Orientation
+    {
+        Horizontal,
+        Vertical
     }
 
     public enum Developer
@@ -57,12 +64,14 @@ namespace PhonePong.MainMenu
             commands[MenuCommand.LocalMulti] = new DelegateCommand(LocalMultiCommand);
             commands[MenuCommand.SelectClassicMode] = new DelegateCommand(SelectClassicModeGroup);
             commands[MenuCommand.SelectAbilityMode] = new DelegateCommand(SelectAbilityModeGroup);
+            commands[MenuCommand.SelectDrawMode] = new DelegateCommand(SelectDrawModeGroup);
             
             // Setting
             view.SetActiveAllPanels(false);
             view.SetActiveAllGroups(false);
             view.GetMainPanel().SetActive(true);
             view.InitializeCreditPanel();
+            view.InitializeSettingPanel();
             
             // FadeOut
             view.OnStartMenu();
@@ -91,6 +100,29 @@ namespace PhonePong.MainMenu
         {
             view.SetParentOfCreditPanel(Developer.Junsang);
         }
+
+        public void ChangeToHorizontalMode()
+        {
+            var h = view.GetHorizontalModeToggle();
+            var v = view.GetVerticalModeToggle();
+            
+            h.SetIsOnWithoutNotify(true);
+            v.SetIsOnWithoutNotify(false);
+            
+            model.Orientation = Orientation.Horizontal;
+        }
+        
+        public void ChangeToVerticalMode()
+        {
+            var h = view.GetHorizontalModeToggle();
+            var v = view.GetVerticalModeToggle();
+            
+            h.SetIsOnWithoutNotify(false);
+            v.SetIsOnWithoutNotify(true);
+            
+            model.Orientation = Orientation.Vertical;
+        }
+
 
         #region Commands
 
@@ -188,13 +220,43 @@ namespace PhonePong.MainMenu
         private void SelectClassicModeGroup()
         {
             // 로딩창 -> 클래식 모드 씬으로 이동
-            view.LoadScene(SceneName.ClassicModeScene);
+            switch (model.Orientation)
+            {
+                case Orientation.Horizontal:
+                    view.LoadScene(SceneName.ClassicModeScene);
+                    break;
+                case Orientation.Vertical:
+                    view.LoadScene(SceneName.VerticalClassicModeScene);
+                    break;
+            }
         }
 
         private void SelectAbilityModeGroup()
         {
             // 로딩창 -> 능력자 모드 씬으로 이동
-            view.LoadScene(SceneName.AbilityModeScene);
+            switch (model.Orientation)
+            {
+                case Orientation.Horizontal:
+                    view.LoadScene(SceneName.AbilityModeScene);
+                    break;
+                case Orientation.Vertical:
+                    view.LoadScene(SceneName.VerticalAbilityModeScene);
+                    break;
+            }
+        }
+
+        private void SelectDrawModeGroup()
+        {
+            // 로딩창 -> 그리기 모드 씬으로 이동
+            switch (model.Orientation)
+            {
+                case Orientation.Horizontal:
+                    view.LoadScene(SceneName.DrawModeScene);
+                    break;
+                case Orientation.Vertical:
+                    view.LoadScene(SceneName.VerticalDrawModeScene);
+                    break;
+            }
         }
 
         #endregion

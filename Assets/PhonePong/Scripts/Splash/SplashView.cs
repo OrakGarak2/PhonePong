@@ -13,7 +13,7 @@ namespace PhonePong.Splash
 
         private void Awake()
         {
-            Application.targetFrameRate = 60;
+            Application.targetFrameRate = 120;
         }
 
         private void Start()
