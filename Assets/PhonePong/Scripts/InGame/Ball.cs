@@ -32,6 +32,8 @@ public class Ball : MonoBehaviour
     protected const int racketLayer = LayerDatas.racketLayer;
     private const float resetWaitTime = 1f;
 
+    protected Coroutine currentResetCoroutine;
+
     protected virtual void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -48,8 +50,9 @@ public class Ball : MonoBehaviour
 
     public void Reset()
     {
-        StopAllCoroutines();
-        StartCoroutine(CoroutineReset());
+        if (currentResetCoroutine != null) StopCoroutine(currentResetCoroutine);
+
+        currentResetCoroutine = StartCoroutine(CoroutineReset());
     }
 
     protected virtual IEnumerator CoroutineReset()
@@ -67,6 +70,8 @@ public class Ball : MonoBehaviour
         Vector2 startDirection = new Vector2(startDirectionX, startDirectionY).normalized;
 
         rb2D.linearVelocity = startDirection * CurrentSpeed;
+
+        currentResetCoroutine = null;
     }
 
     public void ResetSpeed()
@@ -88,13 +93,14 @@ public class Ball : MonoBehaviour
                                 col.transform.position,
                                 col.collider.bounds.size.y);
 
-            // 공과 라켓의 상대 속도를 계산해서 x 방향 벡터를 구한다.
-            float x = transform.position.x < col.relativeVelocity.x ? 1f : -1f;
+            
+            float x = transform.position.x < col.transform.position.x ? -1f : 1f;
             
             acceleration += accelerationIncreaseRate;
-            rb2D.linearVelocity = new Vector2(x, y).normalized * CurrentSpeed;
+
+            rb2D.linearVelocity = new Vector2(x, y);
         }
 
-        //rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
+        rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
     }
 }
