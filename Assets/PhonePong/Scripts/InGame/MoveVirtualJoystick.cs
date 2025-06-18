@@ -18,12 +18,13 @@ public class MoveVirtualJoystick : MonoBehaviour, IDragHandler, IEndDragHandler
     [SerializeField] private float racketMovableRange;
 
     [SerializeField] private float leverRange;
-    [SerializeField] private float signLeverPosY;
 
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        leverRange = rectTransform.sizeDelta.y * 0.5f;
+
+        float leverRadious = lever.sizeDelta.y * 0.5f;
+        leverRange = rectTransform.sizeDelta.y * 0.5f - leverRadious;
 
         racketMovableRange = (top.position.y - bottom.position.y) * 0.5f;
     }
@@ -38,12 +39,7 @@ public class MoveVirtualJoystick : MonoBehaviour, IDragHandler, IEndDragHandler
 
         lever.anchoredPosition = new Vector2(lever.anchoredPosition.x, newLeverPosY);
         
-        
-
-        // if (signNewLeverPosY != signLeverPosY) // 조이스틱을 당기는 방향이 바뀔 때 호출 
-        // {
-        //     racket.Move(signLeverPosY = signNewLeverPosY);
-        // }
+        racket.Move(racketMovableRange * newLeverPosY / leverRange);
     }
 
     public void OnEndDrag(PointerEventData eventData)

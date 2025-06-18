@@ -15,7 +15,6 @@ public class Racket : MonoBehaviour
 
     public void Move(float movement)
     {
-        rb2D.MovePosition(new Vector2(rb2D.position.x, rb2D.position.y + movement));
-        // rb2D.linearVelocityY = moveDirection * speed;
+        rb2D.MovePosition(new Vector2(rb2D.position.x, movement));
     }
 }
