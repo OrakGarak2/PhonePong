@@ -596,7 +596,7 @@ MonoBehaviour:
   lineGauge: {fileID: 1534016044}
   lineGaugeAmount: 1
   lineGaugeIncreaseRate: 0.01
-  lineGaugeDecreaseRate: 0.07
+  lineGaugeDecreaseRate: 0.1
 --- !u!61 &362658512
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1336,7 +1336,7 @@ MonoBehaviour:
   lineGauge: {fileID: 1852943285}
   lineGaugeAmount: 1
   lineGaugeIncreaseRate: 0.01
-  lineGaugeDecreaseRate: 0.07
+  lineGaugeDecreaseRate: 0.1
 --- !u!1 &1525480970
 GameObject:
   m_ObjectHideFlags: 0

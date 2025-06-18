@@ -94,7 +94,7 @@ public class Ball : MonoBehaviour
                                 col.collider.bounds.size.y);
 
             
-            float x = transform.position.x < col.transform.position.x ? -1f : 1f;
+            float x = col.relativeVelocity.x > 0 ? 1f : -1f; //transform.position.x < col.transform.position.x ? -1f : 1f;
             
             acceleration += accelerationIncreaseRate;
 
