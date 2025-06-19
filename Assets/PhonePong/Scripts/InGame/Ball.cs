@@ -40,8 +40,8 @@ public class Ball : MonoBehaviour
 
         SetDontDestroyOnGoal();
 
-        // startDirectionRangeX가 startDirectionRangeY보다 커야지 시작할 때 공이 가운데에서 오래 머물지 않는다.
-        if (startDirectionRangeX <= startDirectionRangeY) startDirectionRangeX += 1f;
+        // startDirectionRangeX가 startDirectionRangeY 이상이어야 시작할 때 공이 가운데에서 오래 머물지 않는다.
+        if (startDirectionRangeX < startDirectionRangeY) startDirectionRangeX = startDirectionRangeY;
 
         Reset();
     }
@@ -94,7 +94,7 @@ public class Ball : MonoBehaviour
                                 col.collider.bounds.size.y);
 
             
-            float x = transform.position.x < col.transform.position.x ? -1f : 1f;
+            float x = col.relativeVelocity.x > 0 ? 1f : -1f; //transform.position.x < col.transform.position.x ? -1f : 1f;
             
             acceleration += accelerationIncreaseRate;
 

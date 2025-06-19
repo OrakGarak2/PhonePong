@@ -27,8 +27,7 @@ public class DrawLine : MonoBehaviour
     private const float lineGaugeMaxAmount = 1f;
     [SerializeField] private float lineGaugeAmount = lineGaugeMaxAmount;
     [SerializeField] private float lineGaugeIncreaseRate;
-    [SerializeField] private float lineGaugeDecreaseRate;
-
+    private const float lineMaxDistance = 4f;
 
     private void Start()
     {
@@ -39,17 +38,16 @@ public class DrawLine : MonoBehaviour
     {
         if (CheckPointInZone(out Vector2 pointPos))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (currentLineRacket == null)
             {
                 CreateLine(pointPos);
             }
-            else if (Input.GetMouseButton(0))
+            else
             {
-                if (currentLineRacket == null) { return; }
-
-                if (lineGaugeAmount > 0f && Vector2.Distance(pointPos, pointPosList[pointPosList.Count - 1]) > nextLinePointMinDistance)
+                float distance = Vector2.Distance(pointPos, pointPosList[pointPosList.Count - 1]);
+                if (lineGaugeAmount > 0f && distance > nextLinePointMinDistance)
                 {
-                    UpdateLine(pointPos);
+                    UpdateLine(pointPos, distance);
                 }
             }
         }
@@ -73,7 +71,9 @@ public class DrawLine : MonoBehaviour
             pointPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
             Collider2D hit = Physics2D.OverlapPoint(pointPos, layerBitMask);
 
-            if (hit != null ? hit.gameObject == gameObject : false)
+            Debug.Log($"Object: {gameObject.name}\ni: {i}, pointPos: {pointPos}, hit: {hit!=null}, hit && hit.gameObject == gameObject: {hit && hit.gameObject == gameObject}");
+
+            if (hit && hit.gameObject == gameObject)
             {
                 return true;
             }
@@ -100,9 +100,9 @@ public class DrawLine : MonoBehaviour
         edgeCollider2D.enabled = true;
     }
 
-    private void UpdateLine(Vector2 newPointPos)
+    private void UpdateLine(Vector2 newPointPos, float distance)
     {
-        UpdateLineGauge(lineGaugeAmount - lineGaugeDecreaseRate);
+        UpdateLineGauge(lineGaugeAmount - distance / lineMaxDistance);
 
         pointPosList.Add(newPointPos);
 

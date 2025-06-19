@@ -13,8 +13,8 @@ public class Racket : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    public void Move(float moveDirection)
+    public void Move(float movement)
     {
-        rb2D.linearVelocityY = moveDirection * speed;
+        rb2D.MovePosition(new Vector2(rb2D.position.x, movement));
     }
 }

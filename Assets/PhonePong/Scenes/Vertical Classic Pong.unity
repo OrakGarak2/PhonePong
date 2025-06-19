@@ -1000,6 +1000,7 @@ MonoBehaviour:
   rb2D: {fileID: 0}
   originalSpeed: 10
   currentSpeed: 0
+  acceleration: 1
   startDirectionRangeX: 3.16
   startDirectionRangeY: 0.85
   dontDestroyOnGoal: 0
@@ -1441,7 +1442,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -150, y: 0}
-  m_SizeDelta: {x: 163, y: 373}
+  m_SizeDelta: {x: 163, y: 746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1534016044
 MonoBehaviour:
@@ -1495,9 +1496,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 0}
   lever: {fileID: 1551896038}
+  top: {fileID: 1773448578}
+  bottom: {fileID: 550312722}
   racket: {fileID: 362658513}
+  racketMovableRange: 0
   leverRange: 0
-  signLeverPosY: 0
 --- !u!1 &1551896037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,7 +2179,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 163, y: 373}
+  m_SizeDelta: {x: 163, y: 746}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1852943284
 MonoBehaviour:
@@ -2192,9 +2195,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 0}
   lever: {fileID: 1266711434}
+  top: {fileID: 1773448578}
+  bottom: {fileID: 550312722}
   racket: {fileID: 999352364}
+  racketMovableRange: 0
   leverRange: 0
-  signLeverPosY: 0
 --- !u!114 &1852943285
 MonoBehaviour:
   m_ObjectHideFlags: 0
