@@ -23,8 +23,7 @@ public class MoveVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandle
     {
         rectTransform = GetComponent<RectTransform>();
 
-        float leverRadious = lever.sizeDelta.y * 0.5f;
-        leverRange = rectTransform.sizeDelta.y * 0.5f - leverRadious;
+        leverRange = (rectTransform.sizeDelta.y - lever.sizeDelta.y) * 0.5f;
 
         racketMovableRange = (top.position.y - bottom.position.y) * 0.5f;
     }

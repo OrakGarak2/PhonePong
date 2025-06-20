@@ -26,8 +26,6 @@ public class TouchZone : MonoBehaviour
             pointPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
             Collider2D hit = Physics2D.OverlapPoint(pointPos, layerBitMask);
 
-            Debug.Log($"Object: {gameObject.name}\ni: {i}, pointPos: {pointPos}, hit: {hit != null}, hit && hit.gameObject == gameObject: {hit && hit.gameObject == gameObject}");
-
             if (hit && hit.gameObject == gameObject)
             {
                 return true;
