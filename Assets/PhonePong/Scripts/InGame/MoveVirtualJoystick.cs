@@ -6,7 +6,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MoveVirtualJoystick : MonoBehaviour, IDragHandler, IEndDragHandler
+public class MoveVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler
 {
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private RectTransform lever;
@@ -23,28 +23,30 @@ public class MoveVirtualJoystick : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         rectTransform = GetComponent<RectTransform>();
 
-        float leverRadious = lever.sizeDelta.y * 0.5f;
-        leverRange = rectTransform.sizeDelta.y * 0.5f - leverRadious;
+        leverRange = (rectTransform.sizeDelta.y - lever.sizeDelta.y) * 0.5f;
 
         racketMovableRange = (top.position.y - bottom.position.y) * 0.5f;
     }
 
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        Move(eventData);
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
+        Move(eventData);
+    }
 
+    private void Move(PointerEventData eventData)
+    {
         float newLeverPosY = eventData.position.y - rectTransform.position.y;
         float signNewLeverPosY = Math.Sign(newLeverPosY); // 현재 조이스틱을 당기고 있는 방향을 구한다.(1이면 위, -1이면 아래)
 
         newLeverPosY = Math.Abs(newLeverPosY) < leverRange ? newLeverPosY : signNewLeverPosY * leverRange;
 
         lever.anchoredPosition = new Vector2(lever.anchoredPosition.x, newLeverPosY);
-        
-        racket.Move(racketMovableRange * newLeverPosY / leverRange);
-    }
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        // lever.anchoredPosition = Vector2.zero;
-        // racket.Move(signLeverPosY = 0f);
+        racket.Move(racketMovableRange * newLeverPosY / leverRange);
     }
 }

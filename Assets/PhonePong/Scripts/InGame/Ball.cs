@@ -19,7 +19,8 @@ public class Ball : MonoBehaviour
     [SerializeField] protected float currentSpeed;
     [SerializeField] protected float acceleration = 1f;
     protected const float accelerationIncreaseRate = 0.05f;
-    public float CurrentSpeed { get { return currentSpeed * acceleration; } }
+    protected const float maxSpeed = 40f;
+    public float CurrentSpeed { get { return currentSpeed * acceleration <= maxSpeed ? currentSpeed * acceleration : maxSpeed; } }
 
     [Header("초기 값 설정")]
     [SerializeField][Range(0, 10f)] private float startDirectionRangeX;

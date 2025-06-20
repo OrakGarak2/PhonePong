@@ -1,9 +1,12 @@
 // System
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 // Unity
 using UnityEngine;
 
-public class Racket : MonoBehaviour
+public class AirHockeyStick : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rb2D;
 
@@ -12,8 +15,8 @@ public class Racket : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    public void Move(float movement)
+    public void Move(Vector2 movement)
     {
-        rb2D.MovePosition(new Vector2(rb2D.position.x, movement));
+        rb2D.MovePosition(movement);
     }
 }
