@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DrawLine : MonoBehaviour
+public class DrawLineZone : TouchZone
 {
     [Header("라인 라켓")]
     [SerializeField] private GameObject lineRacketPrefab;
@@ -17,10 +17,7 @@ public class DrawLine : MonoBehaviour
     [SerializeField] private EdgeCollider2D edgeCollider2D;
     [SerializeField] private List<Vector2> pointPosList;
 
-    [SerializeField] private int layerBitMask;
-
     private const float nextLinePointMinDistance = 0.15f;
-    private const int maxTouchCount = 4;
 
     [Header("게이지")]
     [SerializeField] private Image lineGauge;
@@ -29,9 +26,9 @@ public class DrawLine : MonoBehaviour
     [SerializeField] private float lineGaugeIncreaseRate;
     private const float lineMaxDistance = 4f;
 
-    private void Start()
+    protected override void Start()
     {
-        layerBitMask = 1 << gameObject.layer;
+        base.Start();
     }
 
     private void Update()
@@ -60,27 +57,6 @@ public class DrawLine : MonoBehaviour
                 UpdateLineGauge(lineGaugeAmount + lineGaugeIncreaseRate);
             }
         }
-    }
-
-    private bool CheckPointInZone(out Vector2 pointPos)
-    {
-        for (int i = 0; i < Input.touchCount; i++)
-        {
-            if (i >= maxTouchCount) break;
-
-            pointPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
-            Collider2D hit = Physics2D.OverlapPoint(pointPos, layerBitMask);
-
-            Debug.Log($"Object: {gameObject.name}\ni: {i}, pointPos: {pointPos}, hit: {hit!=null}, hit && hit.gameObject == gameObject: {hit && hit.gameObject == gameObject}");
-
-            if (hit && hit.gameObject == gameObject)
-            {
-                return true;
-            }
-        }
-
-        pointPos = Vector2.zero;
-        return false;
     }
 
     private void CreateLine(Vector2 pointPos)
