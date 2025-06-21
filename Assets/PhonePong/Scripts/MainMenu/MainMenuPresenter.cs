@@ -110,6 +110,7 @@ namespace PhonePong.MainMenu
             v.SetIsOnWithoutNotify(false);
             
             model.Orientation = Orientation.Horizontal;
+            GameManager.Instance.orientation = Orientation.Horizontal;
         }
         
         public void ChangeToVerticalMode()
@@ -121,6 +122,7 @@ namespace PhonePong.MainMenu
             v.SetIsOnWithoutNotify(true);
             
             model.Orientation = Orientation.Vertical;
+            GameManager.Instance.orientation = Orientation.Vertical;
         }
 
 
@@ -220,43 +222,19 @@ namespace PhonePong.MainMenu
         private void SelectClassicModeGroup()
         {
             // 로딩창 -> 클래식 모드 씬으로 이동
-            switch (model.Orientation)
-            {
-                case Orientation.Horizontal:
-                    view.LoadScene(SceneName.ClassicModeScene);
-                    break;
-                case Orientation.Vertical:
-                    view.LoadScene(SceneName.VerticalClassicModeScene);
-                    break;
-            }
+            view.LoadScene(SceneName.ClassicModeScene);
         }
 
         private void SelectAbilityModeGroup()
         {
             // 로딩창 -> 능력자 모드 씬으로 이동
-            switch (model.Orientation)
-            {
-                case Orientation.Horizontal:
-                    view.LoadScene(SceneName.AbilityModeScene);
-                    break;
-                case Orientation.Vertical:
-                    view.LoadScene(SceneName.VerticalAbilityModeScene);
-                    break;
-            }
+            view.LoadScene(SceneName.AbilityModeScene);
         }
 
         private void SelectDrawModeGroup()
         {
             // 로딩창 -> 그리기 모드 씬으로 이동
-            switch (model.Orientation)
-            {
-                case Orientation.Horizontal:
-                    view.LoadScene(SceneName.DrawModeScene);
-                    break;
-                case Orientation.Vertical:
-                    view.LoadScene(SceneName.VerticalDrawModeScene);
-                    break;
-            }
+            view.LoadScene(SceneName.DrawModeScene);
         }
 
         #endregion

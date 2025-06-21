@@ -30,12 +30,6 @@ MonoBehaviour:
     m_path: Assets/PhonePong/Scenes/Ability Pong.unity
   - m_enabled: 1
     m_path: Assets/PhonePong/Scenes/Draw Pong.unity
-  - m_enabled: 1
-    m_path: Assets/PhonePong/Scenes/Vertical Ability Pong.unity
-  - m_enabled: 1
-    m_path: Assets/PhonePong/Scenes/Vertical Classic Pong.unity
-  - m_enabled: 1
-    m_path: Assets/PhonePong/Scenes/Vertical Draw Pong.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:
