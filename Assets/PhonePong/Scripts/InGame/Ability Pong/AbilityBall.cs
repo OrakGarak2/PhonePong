@@ -20,6 +20,7 @@ public class AbilityBall : Ball
     protected override void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
 
         base.Start();
     }
@@ -41,5 +42,28 @@ public class AbilityBall : Ball
         }
 
         return base.CoroutineReset();
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.layer == racketLayer)
+        {
+            ResetColor();
+            ResetSpeed();
+
+            // 공이 맞은 방향을 계산해서 y 방향 벡터를 구한다.
+            float y = HitFactor(transform.position,
+                                col.transform.position,
+                                col.collider.bounds.size.y);
+
+            
+            float x = col.relativeVelocity.x > 0 ? 1f : -1f; //transform.position.x < col.transform.position.x ? -1f : 1f;
+            
+            acceleration += accelerationIncreaseRate;
+
+            rb2D.linearVelocity = new Vector2(x, y);
+        }
+
+        rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
     }
 }
