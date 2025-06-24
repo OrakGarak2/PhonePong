@@ -59,6 +59,7 @@ namespace PhonePong.MainMenu
         [SerializeField] private Sprite secretImage;
 
         private MainMenuPresenter presenter;
+        
 
         private void Awake()
         {

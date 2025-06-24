@@ -4,9 +4,27 @@ using UnityEngine.UI;
 
 public class SwipeMenu : MonoBehaviour
 {
-    public Scrollbar scrollbar;
+    [SerializeField] private Scrollbar scrollbar;
     private float scrollPos = 0;
     private float[] poses;
+    private Button[] buttons;
+    
+    [SerializeField] private RectTransform rectTransform;
+
+    private void OnEnable()
+    {
+        rectTransform.offsetMin = new Vector2(0, rectTransform.offsetMin.y);
+    }
+
+    private void Start()
+    {
+        buttons = new Button[transform.childCount];
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            buttons[i] = transform.GetChild(i).GetComponent<Button>();
+        }
+    }
 
     private void Update()
     {
@@ -38,11 +56,13 @@ public class SwipeMenu : MonoBehaviour
             if (scrollPos < poses[i] + (distance / 2) && scrollPos > poses[i] - (distance / 2))
             {
                 transform.GetChild(i).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(1f, 1f), 0.1f);
+                buttons[i].interactable = true;
                 for (int j = 0; j < poses.Length; j++)
                 {
                     if (j != i)
                     {
                         transform.GetChild(j).localScale = Vector2.Lerp(transform.GetChild(j).localScale, new Vector2(0.8f, 0.8f), 0.1f);
+                        buttons[j].interactable = false;
                     }
                 }
             }
