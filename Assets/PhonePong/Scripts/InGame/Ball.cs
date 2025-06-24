@@ -49,7 +49,7 @@ public class Ball : MonoBehaviour
 
     protected virtual void SetDontDestroyOnGoal() => dontDestroyOnGoal = true;
 
-    public void Reset()
+    public virtual void Reset()
     {
         if (currentResetCoroutine != null) StopCoroutine(currentResetCoroutine);
 

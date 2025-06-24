@@ -33,8 +33,9 @@ public class DummyBallAbility : Ability
 
         for (int i = 0; i < dummyBallSpawnPosOffsetArray.Length; i++)
         {
-            GameObject dummyBall = Instantiate(dummyBallPrefab, (Vector2)ball.transform.position + dummyBallSpawnPosOffsetArray[i], Quaternion.identity);
-            dummyBall.GetComponent<DummyBall>().SetVelocity(new Vector2(dummyBalldirectionX, Random.Range(-1f, 1f)));
+            DummyBall dummyBall = Instantiate(dummyBallPrefab, (Vector2)ball.transform.position + dummyBallSpawnPosOffsetArray[i], Quaternion.identity)
+                .GetComponent<DummyBall>();
+            dummyBall.SetDummyBall(ball, new Vector2(dummyBalldirectionX, Random.Range(-1f, 1f)));
         }
         
     }

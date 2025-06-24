@@ -31,13 +31,10 @@ public class AbilityRacket : Racket
         ballAbilityAction = action;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void ExcuteAbility(AbilityBall abilityBall)
     {
-        if (collision.gameObject.layer == ballLayer)
-        {
-            ballAbilityAction?.Invoke(collision.gameObject.GetComponent<AbilityBall>());
-            ballAbilityAction = null;
-        }
+        ballAbilityAction?.Invoke(abilityBall);
+        ballAbilityAction = null;
     }
 
     public void Reset()
