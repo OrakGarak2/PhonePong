@@ -15,12 +15,19 @@ public class AbilityBall : Ball
     [Header("라켓(임시)")]
     [SerializeField] private AbilityRacket[] rackets;
 
+    private event Action resetEvent;
+
     public Rigidbody2D Rb2D => rb2D;
 
     protected override void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+
+        foreach (var racket in rackets)
+        {
+            AddResetEventListener(racket.Reset);
+        }
 
         base.Start();
     }
@@ -36,10 +43,7 @@ public class AbilityBall : Ball
     {
         ResetColor();
 
-        foreach (var racket in rackets)
-        {
-            racket.Reset();
-        }
+        resetEvent?.Invoke();
 
         return base.CoroutineReset();
     }
@@ -48,22 +52,41 @@ public class AbilityBall : Ball
     {
         if (col.gameObject.layer == racketLayer)
         {
+            AbilityRacket abilityRacket =  col.transform.GetComponent<AbilityRacket>();
+            
             ResetColor();
             ResetSpeed();
+
+            col.transform.GetComponent<AbilityRacket>().ExcuteAbility(this);
 
             // 공이 맞은 방향을 계산해서 y 방향 벡터를 구한다.
             float y = HitFactor(transform.position,
                                 col.transform.position,
                                 col.collider.bounds.size.y);
 
-            
+
             float x = col.relativeVelocity.x > 0 ? 1f : -1f; //transform.position.x < col.transform.position.x ? -1f : 1f;
-            
+
             acceleration += accelerationIncreaseRate;
 
             rb2D.linearVelocity = new Vector2(x, y);
         }
 
         rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
+    }
+
+    public void AddResetEventListener(Action action)
+    {
+        resetEvent += action;
+    }
+
+    public void RemoveResetEventListener(Action action)
+    {
+        resetEvent -= action;
+    }
+
+    private void OnDestroy()
+    {
+        resetEvent = null;
     }
 }

@@ -11,6 +11,8 @@ using PhonePong.Enum;
 
 public abstract class Ability : MonoBehaviour
 {
+    public float cooldown;
+
     /// <summary>
     /// 능력 사용 메서드
     /// </summary>
