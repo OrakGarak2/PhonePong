@@ -53,14 +53,15 @@ public class Ball : MonoBehaviour
     {
         if (currentResetCoroutine != null) StopCoroutine(currentResetCoroutine);
 
+        rb2D.position = Vector2.zero;
+        rb2D.linearVelocity = Vector2.zero;
+
         currentResetCoroutine = StartCoroutine(CoroutineReset());
     }
 
     protected virtual IEnumerator CoroutineReset()
     {
         ResetSpeed();
-        rb2D.linearVelocity = Vector2.zero;
-        rb2D.position = Vector2.zero;
 
         yield return new WaitForSeconds(resetWaitTime);
 
@@ -80,7 +81,7 @@ public class Ball : MonoBehaviour
         currentSpeed = originalSpeed;
         acceleration = 1f;
     }
-    private float HitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight)
+    protected float HitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight)
     {
         return (ballPos.y - racketPos.y) / racketHeight;
     }
