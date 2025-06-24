@@ -44,6 +44,7 @@ namespace PhonePong.MainMenu
         [SerializeField] private Button selectClassicModeButton;
         [SerializeField] private Button selectAbilityModeButton;
         [SerializeField] private Button selectDrawModeButton;
+        [SerializeField] private Button selectAirHockeyModeButton;
 
         [Header("크래딧")] 
         [SerializeField] private GameObject creditPanel;
@@ -74,6 +75,7 @@ namespace PhonePong.MainMenu
             selectClassicModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectClassicMode));
             selectAbilityModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectAbilityMode));
             selectDrawModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectDrawMode));
+            selectAirHockeyModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectAirHockeyMode));
             
             horizontalModeToggle.onValueChanged.AddListener((c) =>
             {

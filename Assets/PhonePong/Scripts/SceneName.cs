@@ -11,11 +11,7 @@ namespace PhonePong
         public const string ClassicModeScene = "Classic Pong";
         public const string AbilityModeScene = "Ability Pong";
         public const string DrawModeScene = "Draw Pong";
-        
-        // 세로 모드
-        public const string VerticalClassicModeScene = "Vertical Classic Pong";
-        public const string VerticalAbilityModeScene = "Vertical Ability Pong";
-        public const string VerticalDrawModeScene = "Vertical Draw Pong";
+        public const string AirHockeyModeScene = "Air Hockey Pong";
     }
 }
 

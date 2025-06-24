@@ -20,7 +20,8 @@ namespace PhonePong.MainMenu
         LocalMulti,
         SelectClassicMode,
         SelectAbilityMode,
-        SelectDrawMode
+        SelectDrawMode,
+        SelectAirHockeyMode
     }
 
     public enum Orientation
@@ -65,6 +66,7 @@ namespace PhonePong.MainMenu
             commands[MenuCommand.SelectClassicMode] = new DelegateCommand(SelectClassicModeGroup);
             commands[MenuCommand.SelectAbilityMode] = new DelegateCommand(SelectAbilityModeGroup);
             commands[MenuCommand.SelectDrawMode] = new DelegateCommand(SelectDrawModeGroup);
+            commands[MenuCommand.SelectAirHockeyMode] = new DelegateCommand(SelectAirHockeyModeGroup);
             
             // Setting
             view.SetActiveAllPanels(false);
@@ -235,6 +237,12 @@ namespace PhonePong.MainMenu
         {
             // 로딩창 -> 그리기 모드 씬으로 이동
             view.LoadScene(SceneName.DrawModeScene);
+        }
+        
+        private void SelectAirHockeyModeGroup()
+        {
+            // 로딩창 -> 에어하키 모드 씬으로 이동
+            view.LoadScene(SceneName.AirHockeyModeScene);
         }
 
         #endregion
