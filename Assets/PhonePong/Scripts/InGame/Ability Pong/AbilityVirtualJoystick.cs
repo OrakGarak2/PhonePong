@@ -42,8 +42,8 @@ public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHan
         }
     }
 
-    [Header("라켓")]
-    [SerializeField] private AbilityRacket racket;
+    [Header("패들")]
+    [SerializeField] private AbilityPaddle paddle;
 
     void Start()
     {
@@ -102,7 +102,7 @@ public class AbilityVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHan
         
         if (selectedAbilityIndex >= 0)
         {
-            abilityUIArray[selectedAbilityIndex].GetComponent<Ability>().Excute(racket);
+            abilityUIArray[selectedAbilityIndex].GetComponent<Ability>().Excute(paddle);
             leverImage.fillAmount = 0f;
             canUseAbility = false;
 

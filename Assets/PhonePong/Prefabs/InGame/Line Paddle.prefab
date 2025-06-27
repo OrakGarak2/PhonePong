@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4562658667326153503}
   - component: {fileID: 9163453347529563623}
   m_Layer: 6
-  m_Name: Line Racket
+  m_Name: Line Paddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

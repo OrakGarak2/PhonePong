@@ -15,7 +15,7 @@ public class AbilityButton : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private Button button;
 
-    [SerializeField] private AbilityRacket abilityRacket;
+    [SerializeField] private AbilityPaddle abilityPaddle;
 
     private void Start()
     {
@@ -27,17 +27,17 @@ public class AbilityButton : MonoBehaviour
         button.onClick.AddListener(OnButtonClicked);
     }
 
-    public Action<float> ObserveAbilityButton(AbilityButtonGroup group, AbilityRacket racket)
+    public Action<float> ObserveAbilityButton(AbilityButtonGroup group, AbilityPaddle paddle)
     {
         abilityButtonGroup = group;
-        abilityRacket = racket;
+        abilityPaddle = paddle;
 
         return UpdateCooldown;
     }
 
     private void OnButtonClicked()
     {
-        ability.Excute(abilityRacket);
+        ability.Excute(abilityPaddle);
         
         abilityButtonGroup.UpdateCooldown(ability.cooldown);
     }

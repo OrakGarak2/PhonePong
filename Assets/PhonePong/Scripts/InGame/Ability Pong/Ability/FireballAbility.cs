@@ -14,9 +14,9 @@ public class FireballAbility : Ability
     [SerializeField] Color ballColor;
     [SerializeField] float speedMultiple = 2f;
 
-    public override void Excute(AbilityRacket racket)
+    public override void Excute(AbilityPaddle paddle)
     {
-        racket.SetAbility((AbilityBall ball) => UseAbility(ball));
+        paddle.SetAbility((AbilityBall ball) => UseAbility(ball));
     }
 
     public void UseAbility(AbilityBall ball)

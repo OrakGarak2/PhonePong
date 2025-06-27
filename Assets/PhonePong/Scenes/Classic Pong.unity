@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 362658511}
   - component: {fileID: 362658513}
   m_Layer: 6
-  m_Name: P1 Racket
+  m_Name: P1 Paddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 579097592}
   - component: {fileID: 579097591}
   m_Layer: 8
-  m_Name: P1 Racket Control Zone
+  m_Name: P1 Paddle Control Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerBitMask: 0
-  racket: {fileID: 362658513}
+  paddle: {fileID: 362658513}
 --- !u!61 &579097592
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -910,7 +910,7 @@ GameObject:
   - component: {fileID: 747319928}
   - component: {fileID: 747319927}
   m_Layer: 8
-  m_Name: P2 Racket Control Zone
+  m_Name: P2 Paddle Control Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerBitMask: 0
-  racket: {fileID: 999352364}
+  paddle: {fileID: 999352364}
 --- !u!61 &747319928
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1242,7 +1242,7 @@ GameObject:
   - component: {fileID: 999352365}
   - component: {fileID: 999352364}
   m_Layer: 6
-  m_Name: P2 Racket
+  m_Name: P2 Paddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

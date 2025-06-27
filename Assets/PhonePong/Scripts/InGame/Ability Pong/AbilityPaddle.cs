@@ -10,7 +10,7 @@ using UnityEngine;
 using PhonePong.Enum;
 using PhonePong.Layer;
 
-public class AbilityRacket : Racket
+public class AbilityPaddle : Paddle
 {
     [SerializeField] PlayerEnum playerEnum;
     public PlayerEnum PlayerEnum => playerEnum;

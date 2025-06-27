@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9613fbeda36dc3c488f5e17c268155b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityRacket: {fileID: 362658513}
+  abilityPaddle: {fileID: 362658513}
 --- !u!1 &176452798
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
   ability: {fileID: 0}
   image: {fileID: 0}
   button: {fileID: 0}
-  abilityRacket: {fileID: 0}
+  abilityPaddle: {fileID: 0}
 --- !u!114 &176452802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,7 +696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 5
   dummyBallPrefab: {fileID: 8699500522895633299, guid: 6f5c60f69255d144783c3ce6f0e715b7, type: 3}
-  racketPlayerEnum: 1
+  paddlePlayerEnum: 0
   dummyBallSpawnPosOffsetArray:
   - {x: 0, y: 0.5}
   - {x: 0, y: -0.5}
@@ -716,7 +716,7 @@ MonoBehaviour:
   ability: {fileID: 0}
   image: {fileID: 0}
   button: {fileID: 0}
-  abilityRacket: {fileID: 0}
+  abilityPaddle: {fileID: 0}
 --- !u!114 &324361673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 362658511}
   - component: {fileID: 362658513}
   m_Layer: 6
-  m_Name: P1 Racket
+  m_Name: P1 Paddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1839,9 +1839,7 @@ MonoBehaviour:
   dontDestroyOnGoal: 1
   spriteRenderer: {fileID: 0}
   originalColor: {r: 1, g: 1, b: 1, a: 1}
-  rackets:
-  - {fileID: 362658513}
-  - {fileID: 999352369}
+  paddles: []
 --- !u!1 &795389719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,7 +1895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 5
   dummyBallPrefab: {fileID: 8699500522895633299, guid: 6f5c60f69255d144783c3ce6f0e715b7, type: 3}
-  racketPlayerEnum: 0
+  paddlePlayerEnum: 0
   dummyBallSpawnPosOffsetArray:
   - {x: 0, y: 0.5}
   - {x: 0, y: -0.5}
@@ -1917,7 +1915,7 @@ MonoBehaviour:
   ability: {fileID: 0}
   image: {fileID: 0}
   button: {fileID: 0}
-  abilityRacket: {fileID: 0}
+  abilityPaddle: {fileID: 0}
 --- !u!114 &795389723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2214,7 +2212,7 @@ MonoBehaviour:
   ability: {fileID: 0}
   image: {fileID: 0}
   button: {fileID: 0}
-  abilityRacket: {fileID: 0}
+  abilityPaddle: {fileID: 0}
 --- !u!114 &996192055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2244,7 +2242,7 @@ GameObject:
   - component: {fileID: 999352365}
   - component: {fileID: 999352369}
   m_Layer: 6
-  m_Name: P2 Racket
+  m_Name: P2 Paddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2422,7 +2420,7 @@ GameObject:
   - component: {fileID: 1002937534}
   - component: {fileID: 1002937538}
   m_Layer: 5
-  m_Name: Racket Size Up Button
+  m_Name: Paddle Size Up Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2464,7 +2462,7 @@ MonoBehaviour:
   ability: {fileID: 0}
   image: {fileID: 0}
   button: {fileID: 0}
-  abilityRacket: {fileID: 0}
+  abilityPaddle: {fileID: 0}
 --- !u!114 &1002937535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2574,7 +2572,7 @@ GameObject:
   - component: {fileID: 1072170875}
   - component: {fileID: 1072170874}
   m_Layer: 8
-  m_Name: P2 Racket Control Zone
+  m_Name: P2 Paddle Control Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2593,7 +2591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerBitMask: 0
-  racket: {fileID: 999352369}
+  paddle: {fileID: 999352369}
 --- !u!61 &1072170875
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2725,7 +2723,7 @@ GameObject:
   - component: {fileID: 1306180694}
   - component: {fileID: 1306180698}
   m_Layer: 5
-  m_Name: Racket Size Up Button
+  m_Name: Paddle Size Up Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2767,7 +2765,7 @@ MonoBehaviour:
   ability: {fileID: 0}
   image: {fileID: 0}
   button: {fileID: 0}
-  abilityRacket: {fileID: 0}
+  abilityPaddle: {fileID: 0}
 --- !u!114 &1306180695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3036,7 +3034,7 @@ GameObject:
   - component: {fileID: 1457097578}
   - component: {fileID: 1457097577}
   m_Layer: 8
-  m_Name: P1 Racket Control Zone
+  m_Name: P1 Paddle Control Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3055,7 +3053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerBitMask: 0
-  racket: {fileID: 362658513}
+  paddle: {fileID: 362658513}
 --- !u!61 &1457097578
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3244,7 +3242,7 @@ MonoBehaviour:
   ability: {fileID: 0}
   image: {fileID: 0}
   button: {fileID: 0}
-  abilityRacket: {fileID: 0}
+  abilityPaddle: {fileID: 0}
 --- !u!114 &1460918234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3991,7 +3989,7 @@ MonoBehaviour:
   ability: {fileID: 0}
   image: {fileID: 0}
   button: {fileID: 0}
-  abilityRacket: {fileID: 0}
+  abilityPaddle: {fileID: 0}
 --- !u!114 &1873150993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4127,7 +4125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9613fbeda36dc3c488f5e17c268155b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityRacket: {fileID: 999352369}
+  abilityPaddle: {fileID: 999352369}
 --- !u!114 &1983979227
 MonoBehaviour:
   m_ObjectHideFlags: 0

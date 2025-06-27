@@ -14,8 +14,8 @@ public class MoveVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandle
     [SerializeField] private Transform top;
     [SerializeField] private Transform bottom;
 
-    [SerializeField] private Racket racket;
-    [SerializeField] private float racketMovableRange;
+    [SerializeField] private Paddle paddle;
+    [SerializeField] private float paddleMovableRange;
 
     [SerializeField] private float leverRange;
 
@@ -25,7 +25,7 @@ public class MoveVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandle
 
         leverRange = (rectTransform.sizeDelta.y - lever.sizeDelta.y) * 0.5f;
 
-        racketMovableRange = (top.position.y - bottom.position.y) * 0.5f;
+        paddleMovableRange = (top.position.y - bottom.position.y) * 0.5f;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -47,6 +47,6 @@ public class MoveVirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandle
 
         lever.anchoredPosition = new Vector2(lever.anchoredPosition.x, newLeverPosY);
 
-        racket.Move(racketMovableRange * newLeverPosY / leverRange);
+        paddle.Move(paddleMovableRange * newLeverPosY / leverRange);
     }
 }

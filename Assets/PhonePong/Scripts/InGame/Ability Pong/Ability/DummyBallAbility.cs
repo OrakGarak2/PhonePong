@@ -7,21 +7,21 @@ using PhonePong.Enum;
 public class DummyBallAbility : Ability
 {
     [SerializeField] private GameObject dummyBallPrefab;
-    [SerializeField] private PlayerEnum racketPlayerEnum;
+    [SerializeField] private PlayerEnum paddlePlayerEnum;
 
     [SerializeField] private Vector2[] dummyBallSpawnPosOffsetArray;
 
-    public override void Excute(AbilityRacket racket)
+    public override void Excute(AbilityPaddle paddle)
     {
-        racket.SetAbility((AbilityBall ball) => UseAbility(ball));
+        paddle.SetAbility((AbilityBall ball) => UseAbility(ball));
 
-        racketPlayerEnum = racket.PlayerEnum;
+        paddlePlayerEnum = paddle.PlayerEnum;
     }
 
     public void UseAbility(AbilityBall ball)
     {
         float dummyBalldirectionX = 0f;
-        switch (racketPlayerEnum)
+        switch (paddlePlayerEnum)
         {
             case PlayerEnum.Player1:
                 dummyBalldirectionX = -1f;

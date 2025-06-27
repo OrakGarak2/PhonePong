@@ -6,15 +6,15 @@ using System.Collections.Generic;
 // Unity
 using UnityEngine;
 
-public class RacketControlZone : TouchZone
+public class PaddleControlZone : TouchZone
 {
-    [SerializeField] private Racket racket;
+    [SerializeField] private Paddle paddle;
 
     private void Update()
     {
         if (CheckPointInZone(out Vector2 pointPos))
         {
-            racket.Move(pointPos.y);
+            paddle.Move(pointPos.y);
         }
     }
 }

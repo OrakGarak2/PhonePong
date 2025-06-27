@@ -3,7 +3,7 @@
 // Unity
 using UnityEngine;
 
-public class Racket : MonoBehaviour
+public class Paddle : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rb2D;
 

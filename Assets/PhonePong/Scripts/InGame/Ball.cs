@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
     [SerializeField] protected bool dontDestroyOnGoal;
     public bool DontDestroyOnGoal => dontDestroyOnGoal;
 
-    protected const int racketLayer = LayerDatas.racketLayer;
+    protected const int paddleLayer = LayerDatas.paddleLayer;
     private const float resetWaitTime = 1f;
 
     protected Coroutine currentResetCoroutine;
@@ -81,14 +81,14 @@ public class Ball : MonoBehaviour
         currentSpeed = originalSpeed;
         acceleration = 1f;
     }
-    protected float HitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight)
+    protected float HitFactor(Vector2 ballPos, Vector2 paddlePos, float paddleHeight)
     {
-        return (ballPos.y - racketPos.y) / racketHeight;
+        return (ballPos.y - paddlePos.y) / paddleHeight;
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.layer == racketLayer)
+        if (col.gameObject.layer == paddleLayer)
         {
             // 공이 맞은 방향을 계산해서 y 방향 벡터를 구한다.
             float y = HitFactor(transform.position,
