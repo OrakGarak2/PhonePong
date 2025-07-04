@@ -30,7 +30,7 @@ public class DummyBall : Ball
 
     protected override void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.layer == racketLayer)
+        if (col.gameObject.layer == paddleLayer)
         {
             Destroy(gameObject);
         }

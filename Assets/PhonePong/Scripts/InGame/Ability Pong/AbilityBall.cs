@@ -12,8 +12,8 @@ public class AbilityBall : Ball
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color originalColor;
 
-    [Header("라켓(임시)")]
-    [SerializeField] private AbilityRacket[] rackets;
+    [Header("패들(임시)")]
+    [SerializeField] private AbilityPaddle[] paddles;
 
     private event Action resetEvent;
 
@@ -24,9 +24,9 @@ public class AbilityBall : Ball
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
 
-        foreach (var racket in rackets)
+        foreach (var paddle in paddles)
         {
-            AddResetEventListener(racket.Reset);
+            AddResetEventListener(paddle.Reset);
         }
 
         base.Start();
@@ -50,14 +50,14 @@ public class AbilityBall : Ball
 
     protected override void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.layer == racketLayer)
+        if (col.gameObject.layer == paddleLayer)
         {
-            AbilityRacket abilityRacket =  col.transform.GetComponent<AbilityRacket>();
+            AbilityPaddle abilityPaddle =  col.transform.GetComponent<AbilityPaddle>();
             
             ResetColor();
             ResetSpeed();
 
-            col.transform.GetComponent<AbilityRacket>().ExcuteAbility(this);
+            col.transform.GetComponent<AbilityPaddle>().ExcuteAbility(this);
 
             // 공이 맞은 방향을 계산해서 y 방향 벡터를 구한다.
             float y = HitFactor(transform.position,

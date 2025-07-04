@@ -9,13 +9,13 @@ using UnityEngine;
 public class AbilityButtonGroup : MonoBehaviour
 {
     private Action<float> cooldownAction;
-    [SerializeField] private AbilityRacket abilityRacket;
+    [SerializeField] private AbilityPaddle abilityPaddle;
 
     private void Start()
     {
         foreach (var button in GetComponentsInChildren<AbilityButton>())
         {
-            cooldownAction += button.ObserveAbilityButton(this, abilityRacket);
+            cooldownAction += button.ObserveAbilityButton(this, abilityPaddle);
         }
     }
 

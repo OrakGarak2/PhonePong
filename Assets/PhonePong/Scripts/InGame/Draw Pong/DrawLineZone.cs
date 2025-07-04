@@ -9,9 +9,9 @@ using UnityEngine.UI;
 
 public class DrawLineZone : TouchZone
 {
-    [Header("라인 라켓")]
-    [SerializeField] private GameObject lineRacketPrefab;
-    [SerializeField] private GameObject currentLineRacket;
+    [Header("라인 패들")]
+    [SerializeField] private GameObject linePaddlePrefab;
+    [SerializeField] private GameObject currentLinePaddle;
 
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private EdgeCollider2D edgeCollider2D;
@@ -35,7 +35,7 @@ public class DrawLineZone : TouchZone
     {
         if (CheckPointInZone(out Vector2 pointPos))
         {
-            if (currentLineRacket == null)
+            if (currentLinePaddle == null)
             {
                 CreateLine(pointPos);
             }
@@ -61,9 +61,9 @@ public class DrawLineZone : TouchZone
 
     private void CreateLine(Vector2 pointPos)
     {
-        currentLineRacket = Instantiate(lineRacketPrefab, Vector2.zero, Quaternion.identity);
-        lineRenderer = currentLineRacket.GetComponent<LineRenderer>();
-        edgeCollider2D = currentLineRacket.GetComponent<EdgeCollider2D>();
+        currentLinePaddle = Instantiate(linePaddlePrefab, Vector2.zero, Quaternion.identity);
+        lineRenderer = currentLinePaddle.GetComponent<LineRenderer>();
+        edgeCollider2D = currentLinePaddle.GetComponent<EdgeCollider2D>();
 
         pointPosList.Clear();
         pointPosList.Add(pointPos);
@@ -90,9 +90,9 @@ public class DrawLineZone : TouchZone
 
     private void DeleteLine()
     {
-        if (currentLineRacket != null)
+        if (currentLinePaddle != null)
         {
-            Destroy(currentLineRacket);
+            Destroy(currentLinePaddle);
         }
     }
 
