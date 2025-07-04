@@ -4,5 +4,6 @@ namespace PhonePong.Layer
     {
         public const int paddleLayer = 6;
         public const int ballLayer = 7;
+        public const int interactableLayer = 10;
     }
 }
