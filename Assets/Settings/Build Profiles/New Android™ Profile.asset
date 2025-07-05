@@ -23,7 +23,9 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/PhonePong/Scenes/00_Splash.unity
   - m_enabled: 1
-    m_path: Assets/PhonePong/Scenes/01_MainMenu.unity
+    m_path: Assets/PhonePong/Scenes/01_Title.unity
+  - m_enabled: 1
+    m_path: Assets/PhonePong/Scenes/02_MainMenu.unity
   - m_enabled: 1
     m_path: Assets/PhonePong/Scenes/Classic Pong.unity
   - m_enabled: 1

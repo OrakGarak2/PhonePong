@@ -1,11 +1,12 @@
 using UnityEngine;
 
-namespace PhonePong
+namespace LegendPingPong
 {
     public static class SceneName
     {
         public const string SplashScene = "00_Splash";
-        public const string MainScene = "01_MainMenu";
+        public const string TitleScene = "01_Title";
+        public const string MainMenuScene = "02_MainMenu";
         
         // 가로 모드
         public const string ClassicModeScene = "Classic Pong";

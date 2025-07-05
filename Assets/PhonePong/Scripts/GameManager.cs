@@ -1,5 +1,5 @@
 using System;
-using PhonePong.MainMenu;
+using LegendPingPong.MainMenu;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour

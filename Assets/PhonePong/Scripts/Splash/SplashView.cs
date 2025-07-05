@@ -5,7 +5,7 @@ using UnityEngine.UI;
 // Utils
 using Utils.Animation;
 
-namespace PhonePong.Splash
+namespace LegendPingPong.Splash
 {
     public class SplashView : MonoBehaviour
     {
@@ -33,7 +33,7 @@ namespace PhonePong.Splash
 
         private void SceneChange()
         {
-            SceneLoader.LoadSceneAsync(this, SceneName.MainScene);
+            SceneLoader.LoadSceneAsync(this, SceneName.TitleScene);
         }
     }
 }

@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using PhonePong;
+using LegendPingPong;
 
 // Unity
 using UnityEngine;
@@ -28,7 +28,7 @@ public class GoalLine : MonoBehaviour
             {
                 if (isMaxScore)
                 {
-                    SceneLoader.LoadSceneAsync(this, sceneName: SceneName.MainScene);
+                    SceneLoader.LoadSceneAsync(this, sceneName: SceneName.MainMenuScene);
                     ball.gameObject.SetActive(false);
                 }
                 else            ball.Reset();

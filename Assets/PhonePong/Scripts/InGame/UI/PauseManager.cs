@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using PhonePong;
-using PhonePong.MainMenu;
+using LegendPingPong;
+using LegendPingPong.MainMenu;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -182,7 +182,7 @@ public class PauseManager : MonoBehaviour
 
     private void Exit()
     {
-        SceneLoader.LoadSceneAsync(this, SceneName.MainScene, () =>
+        SceneLoader.LoadSceneAsync(this, SceneName.MainMenuScene, () =>
         {
             Time.timeScale = 1;
         });

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PhonePong.MainMenu
+namespace LegendPingPong.MainMenu
 {
     public class MainMenuModel
     {

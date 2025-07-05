@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utils.Animation;
 
-namespace PhonePong.MainMenu
+namespace LegendPingPong.MainMenu
 {
     public class MainMenuView : MonoBehaviour, IMainMenuView
     {
@@ -38,9 +38,16 @@ namespace PhonePong.MainMenu
         [SerializeField] private Button noButton;
         
         [Header("플레이어 선택")] 
+        [SerializeField] private Button singleButton;
         [SerializeField] private Button localMultiButton;
+
+        [Header("싱글 전용 모드 선택")] 
+        [SerializeField] private GameObject singleGroup;
+        [SerializeField] private Button vsRetroModeButton;
+        [SerializeField] private Button survivalModeButton;
         
-        [Header("모드 선택")]
+        [Header("로컬 멀티 전용 모드 선택")]
+        [SerializeField] private GameObject localMultiGroup;
         [SerializeField] private Button selectClassicModeButton;
         [SerializeField] private Button selectAbilityModeButton;
         [SerializeField] private Button selectDrawModeButton;
@@ -60,7 +67,6 @@ namespace PhonePong.MainMenu
 
         private MainMenuPresenter presenter;
         
-
         private void Awake()
         {
             presenter = new MainMenuPresenter(this, new MainMenuModel());
@@ -72,6 +78,7 @@ namespace PhonePong.MainMenu
             closeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.Close));
             yesButton.onClick.AddListener(() => presenter.Execute(MenuCommand.Yes));
             noButton.onClick.AddListener(() => presenter.Execute(MenuCommand.No));
+            singleButton.onClick.AddListener(() => presenter.Execute(MenuCommand.Single));
             localMultiButton.onClick.AddListener(() => presenter.Execute(MenuCommand.LocalMulti));
             selectClassicModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectClassicMode));
             selectAbilityModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectAbilityMode));
@@ -119,8 +126,8 @@ namespace PhonePong.MainMenu
 
         public void SetActiveAllGroups(bool isActive)
         {
-            selectPlayersGroup.SetActive(isActive);
-            selectModeGroup.SetActive(isActive);
+            selectPlayersGroup.SetActive(isActive); selectModeGroup.SetActive(isActive);
+            singleGroup.SetActive(isActive); localMultiGroup.SetActive(isActive);
             settingsGroup.SetActive(isActive);
             creditGroup.SetActive(isActive);
         }
@@ -201,6 +208,8 @@ namespace PhonePong.MainMenu
         
         public GameObject GetSelectPlayersGroup() => selectPlayersGroup;
         public GameObject GetSelectModeGroup() => selectModeGroup;
+        public GameObject GetSingleModeGroup() => singleGroup;
+        public GameObject GetLocalMultiModeGroup() => localMultiGroup;
         public GameObject GetSettingsGroup() => settingsGroup;
         public GameObject GetCreditGroup() => creditGroup;
         

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PhonePong.MainMenu
+namespace LegendPingPong.MainMenu
 {
     public interface IMainMenuView
     {
@@ -34,6 +34,8 @@ namespace PhonePong.MainMenu
         // Group
         GameObject GetSelectPlayersGroup();
         GameObject GetSelectModeGroup();
+        GameObject GetSingleModeGroup();
+        GameObject GetLocalMultiModeGroup();
         GameObject GetSettingsGroup();
         GameObject GetCreditGroup();
 
