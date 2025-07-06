@@ -5,11 +5,9 @@ using System.Collections.Generic;
 
 // Unity
 using UnityEngine;
-using UnityEngine.UI;
 
 // PhonePong
 using PhonePong.Layer;
-using Unity.VisualScripting;
 
 namespace PhonePong.VSRetro.Nonbattle
 {

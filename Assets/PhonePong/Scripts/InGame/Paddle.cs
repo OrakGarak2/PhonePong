@@ -1,5 +1,3 @@
-// System
-
 // Unity
 using UnityEngine;
 
@@ -12,7 +10,7 @@ public class Paddle : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    public void Move(float movement)
+    public virtual void Move(float movement)
     {
         rb2D.MovePosition(new Vector2(rb2D.position.x, movement));
     }
