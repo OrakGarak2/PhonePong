@@ -1,4 +1,7 @@
+using BackEnd;
+using FMOD;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 namespace LegendPingPong.Login
 {
@@ -45,6 +48,16 @@ namespace LegendPingPong.Login
             bool isValid = !string.IsNullOrWhiteSpace(view.GetLoginId()) && 
                            !string.IsNullOrWhiteSpace(view.GetLoginPassword());
             view.SetLoginInteractable(isValid);
+        }
+
+        public void OnGuestLoginButtonClicked()
+        {
+            BackendReturnObject bro = Backend.BMember.GuestLogin("게스트 로그인으로 로그인함");
+            if (bro.IsSuccess())
+            {
+                SceneManager.LoadScene(SceneName.MainMenuScene);
+                Debug.Log("게스트 로그인에 성공했습니다");
+            }
         }
     }
 }

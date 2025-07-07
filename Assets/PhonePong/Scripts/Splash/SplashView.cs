@@ -33,7 +33,7 @@ namespace LegendPingPong.Splash
 
         private void SceneChange()
         {
-            SceneLoader.LoadSceneAsync(this, SceneName.TitleScene);
+            SceneLoader.LoadSceneAsync(this, SceneName.MainMenuScene);
         }
     }
 }

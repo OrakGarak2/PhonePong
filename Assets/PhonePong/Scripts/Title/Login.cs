@@ -13,6 +13,9 @@ namespace LegendPingPong.Login
         [SerializeField] private Button registerButton;
         [SerializeField] private Button findPwButton;
         [SerializeField] private Button backButton;
+
+        [SerializeField] private Button guestLoginButton;
+        
     
         private LoginPresenter presenter;
 
@@ -25,6 +28,8 @@ namespace LegendPingPong.Login
             loginButton.onClick.AddListener(presenter.OnLoginButtonClicked);
             registerButton.onClick.AddListener(presenter.OnRegisterButtonClicked);
             findPwButton.onClick.AddListener(() => { });
+            
+            guestLoginButton.onClick.AddListener(presenter.OnGuestLoginButtonClicked);
         }
 
         public void ShowMessage(string msg) => SetupMessage(msg);

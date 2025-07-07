@@ -13,6 +13,8 @@ namespace LegendPingPong
         public const string AbilityModeScene = "Ability Pong";
         public const string DrawModeScene = "Draw Pong";
         public const string AirHockeyModeScene = "Air Hockey Pong";
+
+        public const string HashKeyScene = "Hash";
     }
 }
 
