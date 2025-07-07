@@ -9,6 +9,7 @@ using UnityEngine;
 public class DummyBall : Ball
 {
     private AbilityBall abilityBall;
+    private const float extraSurvivalTime = 1f;
 
     protected override void Start()
     {
@@ -52,7 +53,7 @@ public class DummyBall : Ball
 
     protected override IEnumerator CoroutineReset()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(extraSurvivalTime);
 
         if(gameObject.activeSelf)
             Destroy(gameObject);
