@@ -62,6 +62,7 @@ public class Ball : MonoBehaviour
     protected virtual IEnumerator CoroutineReset()
     {
         ResetSpeed();
+        ResetAcceleration();
 
         yield return new WaitForSeconds(resetWaitTime);
 
@@ -76,11 +77,9 @@ public class Ball : MonoBehaviour
         currentResetCoroutine = null;
     }
 
-    public void ResetSpeed()
-    {
-        currentSpeed = originalSpeed;
-        acceleration = 1f;
-    }
+    public void ResetSpeed() => currentSpeed = originalSpeed;
+    public void ResetAcceleration() => acceleration = 1f;
+
     protected float HitFactor(Vector2 ballPos, Vector2 paddlePos, float paddleHeight)
     {
         return (ballPos.y - paddlePos.y) / paddleHeight;

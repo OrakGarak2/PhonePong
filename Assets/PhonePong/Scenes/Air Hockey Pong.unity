@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
-  originalSpeed: 20
+  originalSpeed: 15
   currentSpeed: 0
   acceleration: 1
   startDirectionRangeX: 3.16

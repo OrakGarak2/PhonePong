@@ -9,6 +9,7 @@ using UnityEngine;
 public class DummyBall : Ball
 {
     private AbilityBall abilityBall;
+    private const float extraSurvivalTime = 1f;
 
     protected override void Start()
     {
@@ -32,6 +33,11 @@ public class DummyBall : Ball
     {
         if (col.gameObject.layer == paddleLayer)
         {
+            if (currentResetCoroutine != null)
+            {
+                StopCoroutine(currentResetCoroutine);
+                currentResetCoroutine = null;
+            }
             Destroy(gameObject);
         }
         else
@@ -42,7 +48,15 @@ public class DummyBall : Ball
 
     public override void Reset()
     {
-        Destroy(gameObject);
+        currentResetCoroutine = StartCoroutine(CoroutineReset());
+    }
+
+    protected override IEnumerator CoroutineReset()
+    {
+        yield return new WaitForSeconds(extraSurvivalTime);
+
+        if(gameObject.activeSelf)
+            Destroy(gameObject);
     }
 
     private void OnDisable()
