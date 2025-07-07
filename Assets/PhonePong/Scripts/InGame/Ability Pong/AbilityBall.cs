@@ -52,8 +52,6 @@ public class AbilityBall : Ball
     {
         if (col.gameObject.layer == paddleLayer)
         {
-            AbilityPaddle abilityPaddle =  col.transform.GetComponent<AbilityPaddle>();
-            
             ResetColor();
             ResetSpeed();
 

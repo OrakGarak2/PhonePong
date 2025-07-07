@@ -64,7 +64,16 @@ public class Ball : MonoBehaviour
         ResetSpeed();
         ResetAcceleration();
 
-        yield return new WaitForSeconds(resetWaitTime);
+        // 분명 (0, 0)으로 초기화했는데도 가끔씩 velocity가 (0, 0)이 안되고 스스로 튕겨나가는 버그가 일어나서 때문에 고정
+        float timer = 0;
+        while (timer < resetWaitTime)
+        {
+            rb2D.position = Vector2.zero;
+            rb2D.linearVelocity = Vector2.zero;
+            
+            timer += Time.deltaTime;
+            yield return null;
+        }
 
         float startDirectionY = UnityEngine.Random.Range(-startDirectionRangeY, startDirectionRangeY);
         float startDirectionX = UnityEngine.Random.Range(startDirectionY >= 0 ? startDirectionY : -startDirectionRangeX,
