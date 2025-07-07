@@ -32,6 +32,11 @@ public class DummyBall : Ball
     {
         if (col.gameObject.layer == paddleLayer)
         {
+            if (currentResetCoroutine != null)
+            {
+                StopCoroutine(currentResetCoroutine);
+                currentResetCoroutine = null;
+            }
             Destroy(gameObject);
         }
         else
@@ -42,7 +47,15 @@ public class DummyBall : Ball
 
     public override void Reset()
     {
-        Destroy(gameObject);
+        currentResetCoroutine = StartCoroutine(CoroutineReset());
+    }
+
+    protected override IEnumerator CoroutineReset()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if(gameObject.activeSelf)
+            Destroy(gameObject);
     }
 
     private void OnDisable()
