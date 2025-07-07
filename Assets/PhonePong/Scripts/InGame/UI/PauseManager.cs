@@ -4,6 +4,7 @@ using LegendPingPong;
 using LegendPingPong.MainMenu;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Utils.Animation;
 
@@ -182,10 +183,8 @@ public class PauseManager : MonoBehaviour
 
     private void Exit()
     {
-        SceneLoader.LoadSceneAsync(this, SceneName.MainMenuScene, () =>
-        {
-            Time.timeScale = 1;
-        });
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneName.MainMenuScene);
     }
 
     private void CountDown(TMP_Text countDownText, string text)

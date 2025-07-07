@@ -4,6 +4,7 @@ using System.Collections.Generic;
 // UnityEngine
 using PhonePong.MainMenu.Command;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LegendPingPong.MainMenu
 {
@@ -238,25 +239,25 @@ namespace LegendPingPong.MainMenu
         private void SelectClassicModeGroup()
         {
             // 로딩창 -> 클래식 모드 씬으로 이동
-            view.LoadScene(SceneName.ClassicModeScene);
+            SceneManager.LoadScene(SceneName.ClassicModeScene);
         }
 
         private void SelectAbilityModeGroup()
         {
             // 로딩창 -> 능력자 모드 씬으로 이동
-            view.LoadScene(SceneName.AbilityModeScene);
+            SceneManager.LoadScene(SceneName.AbilityModeScene);
         }
 
         private void SelectDrawModeGroup()
         {
             // 로딩창 -> 그리기 모드 씬으로 이동
-            view.LoadScene(SceneName.DrawModeScene);
+            SceneManager.LoadScene(SceneName.DrawModeScene);
         }
         
         private void SelectAirHockeyModeGroup()
         {
             // 로딩창 -> 에어하키 모드 씬으로 이동
-            view.LoadScene(SceneName.AirHockeyModeScene);
+            SceneManager.LoadScene(SceneName.AirHockeyModeScene);
         }
 
         #endregion
