@@ -1242,7 +1242,7 @@ PrefabInstance:
     - target: {fileID: 2554695326824390763, guid: 440aea07a76f28f40b16cfaeccf888f3, type: 3}
       propertyPath: win
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1185853633}
     - target: {fileID: 3128490804160696890, guid: 440aea07a76f28f40b16cfaeccf888f3, type: 3}
       propertyPath: m_Name
       value: InGameUIGroup
@@ -1250,7 +1250,7 @@ PrefabInstance:
     - target: {fileID: 5139249735696672012, guid: 440aea07a76f28f40b16cfaeccf888f3, type: 3}
       propertyPath: win
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1185853633}
     - target: {fileID: 8023051421914270614, guid: 440aea07a76f28f40b16cfaeccf888f3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1363,6 +1363,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f796a751a30251544976ff545da61e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1185853633 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8749787216727756424, guid: 440aea07a76f28f40b16cfaeccf888f3, type: 3}
+  m_PrefabInstance: {fileID: 1185853629}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1217141719
 GameObject:
   m_ObjectHideFlags: 0
