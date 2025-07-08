@@ -1463,7 +1463,7 @@ GameObject:
   - component: {fileID: 1762559230}
   - component: {fileID: 1762559232}
   m_Layer: 5
-  m_Name: MoveVirtualJoystick
+  m_Name: Move Virtual Joystick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
