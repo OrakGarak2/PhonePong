@@ -19,7 +19,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     /// <summary>
     /// 레버가 이동 가능한 범위를 정해주는 변수(수가 커질수록 더 넓은 범위로 이동 가능)
     /// </summary>
-    [SerializeField][Range(0f, 1f)] protected float leverRangeOffset;
+    [SerializeField][Range(0f, 1f)] protected float leverRangeOffset = 0.5f;
 
     protected Vector2 leverDirection
     {
