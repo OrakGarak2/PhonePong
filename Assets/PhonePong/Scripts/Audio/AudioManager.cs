@@ -7,11 +7,11 @@ public class AudioManager : MonoBehaviour
 {
     [Header("볼륨")]
     [Range(0, 1)]
-    public float masterVolume = 1;
+    public float masterVolume = 0.5f;
     [Range(0, 1)]
-    public float musicVolume = 1;
+    public float musicVolume = 0.5f;
     [Range(0, 1)]
-    public float sfxVolume = 1;
+    public float sfxVolume = 0.5f;
 
     private Bus masterBus;
     private Bus musicBus;
@@ -27,9 +27,10 @@ public class AudioManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            //Debug.LogError($"There is already an instance of {typeof(AudioManager).Name}");
+            Destroy(this.gameObject);
         }
         Instance = this;
+        DontDestroyOnLoad(this.gameObject);
         
         eventInstances = new List<EventInstance>();
         eventEmitters = new List<StudioEventEmitter>();

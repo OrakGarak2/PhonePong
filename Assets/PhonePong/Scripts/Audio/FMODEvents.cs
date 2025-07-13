@@ -21,8 +21,9 @@ public class FMODEvents : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.LogError("FMODEvents instance already exists.");
+            Destroy(this.gameObject);
         }
         Instance = this;   
+        DontDestroyOnLoad(this.gameObject);
     }
 }

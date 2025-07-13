@@ -24,7 +24,6 @@ namespace LegendPingPong.MainMenu
         [SerializeField] private Button closeButton;
 
         [Header("팝업 메뉴")] 
-        [SerializeField] private GameObject selectPlayersGroup;
         [SerializeField] private GameObject selectModeGroup;
         [SerializeField] private GameObject settingsGroup;
         [SerializeField] private GameObject creditGroup;
@@ -36,15 +35,6 @@ namespace LegendPingPong.MainMenu
         [Header("종료 패널")] 
         [SerializeField] private Button yesButton;
         [SerializeField] private Button noButton;
-        
-        [Header("플레이어 선택")] 
-        [SerializeField] private Button singleButton;
-        [SerializeField] private Button localMultiButton;
-
-        [Header("싱글 전용 모드 선택")] 
-        [SerializeField] private GameObject singleGroup;
-        [SerializeField] private Button vsRetroModeButton;
-        [SerializeField] private Button survivalModeButton;
         
         [Header("로컬 멀티 전용 모드 선택")]
         [SerializeField] private GameObject localMultiGroup;
@@ -78,8 +68,6 @@ namespace LegendPingPong.MainMenu
             closeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.Close));
             yesButton.onClick.AddListener(() => presenter.Execute(MenuCommand.Yes));
             noButton.onClick.AddListener(() => presenter.Execute(MenuCommand.No));
-            singleButton.onClick.AddListener(() => presenter.Execute(MenuCommand.Single));
-            localMultiButton.onClick.AddListener(() => presenter.Execute(MenuCommand.LocalMulti));
             selectClassicModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectClassicMode));
             selectAbilityModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectAbilityMode));
             selectDrawModeButton.onClick.AddListener(() => presenter.Execute(MenuCommand.SelectDrawMode));
@@ -126,8 +114,6 @@ namespace LegendPingPong.MainMenu
 
         public void SetActiveAllGroups(bool isActive)
         {
-            selectPlayersGroup.SetActive(isActive); selectModeGroup.SetActive(isActive);
-            singleGroup.SetActive(isActive); localMultiGroup.SetActive(isActive);
             settingsGroup.SetActive(isActive);
             creditGroup.SetActive(isActive);
         }
@@ -206,9 +192,7 @@ namespace LegendPingPong.MainMenu
         public Button GetCreditButton() => creditButton;
         public Button GetExitButton() => exitButton;
         
-        public GameObject GetSelectPlayersGroup() => selectPlayersGroup;
         public GameObject GetSelectModeGroup() => selectModeGroup;
-        public GameObject GetSingleModeGroup() => singleGroup;
         public GameObject GetLocalMultiModeGroup() => localMultiGroup;
         public GameObject GetSettingsGroup() => settingsGroup;
         public GameObject GetCreditGroup() => creditGroup;

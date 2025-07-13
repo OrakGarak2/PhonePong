@@ -32,9 +32,7 @@ namespace LegendPingPong.MainMenu
         Button GetExitButton();
         
         // Group
-        GameObject GetSelectPlayersGroup();
         GameObject GetSelectModeGroup();
-        GameObject GetSingleModeGroup();
         GameObject GetLocalMultiModeGroup();
         GameObject GetSettingsGroup();
         GameObject GetCreditGroup();

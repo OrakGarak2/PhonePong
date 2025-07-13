@@ -174,7 +174,6 @@ GameObject:
   m_Component:
   - component: {fileID: 455597063}
   - component: {fileID: 455597064}
-  - component: {fileID: 455597065}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -209,84 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575a5e0fcdeeca24ba1c79b6d1fe78c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolume: 1
-  musicVolume: 1
-  sfxVolume: 1
---- !u!114 &455597065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455597062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fedc3bea16c14e042a561caf4006127a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <ballBounce>k__BackingField:
-    Guid:
-      Data1: 733413838
-      Data2: 1115518042
-      Data3: -1300212066
-      Data4: -1237883527
-    Path: event:/BallWallBounce
-  <ballVoidBounce>k__BackingField:
-    Guid:
-      Data1: -440031412
-      Data2: 1330390335
-      Data3: -1887165823
-      Data4: -835463588
-    Path: event:/BallVoidBounce
-  <generateDummyBall>k__BackingField:
-    Guid:
-      Data1: -349403761
-      Data2: 1256722436
-      Data3: -1231376457
-      Data4: -1725143333
-    Path: event:/Dummyball
-  <fireBall>k__BackingField:
-    Guid:
-      Data1: 1802022942
-      Data2: 1141997084
-      Data3: -2136658276
-      Data4: 1190794948
-    Path: event:/Fireball
-  <paddleSizeUp>k__BackingField:
-    Guid:
-      Data1: -1015120871
-      Data2: 1284198459
-      Data3: 38227867
-      Data4: -1744483606
-    Path: event:/PaddleSizeup
-  <goal>k__BackingField:
-    Guid:
-      Data1: 1087318177
-      Data2: 1252580727
-      Data3: -2019667522
-      Data4: 960664101
-    Path: event:/Goal
-  <lineDraw>k__BackingField:
-    Guid:
-      Data1: -1423022035
-      Data2: 1244713587
-      Data3: -2092502349
-      Data4: 130206474
-    Path: event:/LineDraw
-  <buttonClick>k__BackingField:
-    Guid:
-      Data1: -441032113
-      Data2: 1203118331
-      Data3: -630672708
-      Data4: 1829732001
-    Path: event:/ButtonClick
-  <music>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+  masterVolume: 0.5
+  musicVolume: 0.5
+  sfxVolume: 0.5
 --- !u!1 &546159124
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +540,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179368624}
   m_CullTransparentMesh: 1
---- !u!1 &1307155417
+--- !u!1 &1323450801
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -624,36 +548,97 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1307155419}
-  - component: {fileID: 1307155418}
+  - component: {fileID: 1323450803}
+  - component: {fileID: 1323450802}
   m_Layer: 0
-  m_Name: BackendManager
+  m_Name: FMODEvents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1307155418
+--- !u!114 &1323450802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307155417}
+  m_GameObject: {fileID: 1323450801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a07d644bb70ee9544ac12436bda3692e, type: 3}
+  m_Script: {fileID: 11500000, guid: fedc3bea16c14e042a561caf4006127a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hashButton: {fileID: 0}
-  getHashKeyText: {fileID: 0}
---- !u!4 &1307155419
+  <ballBounce>k__BackingField:
+    Guid:
+      Data1: 733413838
+      Data2: 1115518042
+      Data3: -1300212066
+      Data4: -1237883527
+    Path: event:/BallWallBounce
+  <ballVoidBounce>k__BackingField:
+    Guid:
+      Data1: -440031412
+      Data2: 1330390335
+      Data3: -1887165823
+      Data4: -835463588
+    Path: event:/BallVoidBounce
+  <generateDummyBall>k__BackingField:
+    Guid:
+      Data1: -349403761
+      Data2: 1256722436
+      Data3: -1231376457
+      Data4: -1725143333
+    Path: event:/Dummyball
+  <fireBall>k__BackingField:
+    Guid:
+      Data1: 1802022942
+      Data2: 1141997084
+      Data3: -2136658276
+      Data4: 1190794948
+    Path: event:/Fireball
+  <paddleSizeUp>k__BackingField:
+    Guid:
+      Data1: -1015120871
+      Data2: 1284198459
+      Data3: 38227867
+      Data4: -1744483606
+    Path: event:/PaddleSizeup
+  <goal>k__BackingField:
+    Guid:
+      Data1: 1087318177
+      Data2: 1252580727
+      Data3: -2019667522
+      Data4: 960664101
+    Path: event:/Goal
+  <lineDraw>k__BackingField:
+    Guid:
+      Data1: -1423022035
+      Data2: 1244713587
+      Data3: -2092502349
+      Data4: 130206474
+    Path: event:/LineDraw
+  <buttonClick>k__BackingField:
+    Guid:
+      Data1: -441032113
+      Data2: 1203118331
+      Data3: -630672708
+      Data4: 1829732001
+    Path: event:/ButtonClick
+  <music>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+--- !u!4 &1323450803
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307155417}
+  m_GameObject: {fileID: 1323450801}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -934,9 +919,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1907567036}
-  - {fileID: 1307155419}
   - {fileID: 362002811}
   - {fileID: 455597063}
+  - {fileID: 1323450803}
   - {fileID: 1608374993}
   - {fileID: 574712950}
   - {fileID: 1519134001}

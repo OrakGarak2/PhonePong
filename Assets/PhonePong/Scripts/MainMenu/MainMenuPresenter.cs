@@ -18,10 +18,6 @@ namespace LegendPingPong.MainMenu
         Close,
         Yes,
         No,
-        Single,
-        VsRetroMode,
-        SurvivalMode,
-        LocalMulti,
         SelectClassicMode,
         SelectAbilityMode,
         SelectDrawMode,
@@ -66,8 +62,6 @@ namespace LegendPingPong.MainMenu
             commands[MenuCommand.Close] = new DelegateCommand(CloseCommand);
             commands[MenuCommand.Yes] = new DelegateCommand(YesCommand);
             commands[MenuCommand.No] = new DelegateCommand(NoCommand);
-            commands[MenuCommand.Single] = new DelegateCommand(SelectSingleModeCommand);
-            commands[MenuCommand.LocalMulti] = new DelegateCommand(SelectLocalMultiModeCommand);
             commands[MenuCommand.SelectClassicMode] = new DelegateCommand(SelectClassicModeGroup);
             commands[MenuCommand.SelectAbilityMode] = new DelegateCommand(SelectAbilityModeGroup);
             commands[MenuCommand.SelectDrawMode] = new DelegateCommand(SelectDrawModeGroup);
@@ -141,7 +135,7 @@ namespace LegendPingPong.MainMenu
             model.MenuCommand = MenuCommand.Start;
             
             view.GetPopupPanel().SetActive(true);
-            view.GetSelectPlayersGroup().SetActive(true);
+            view.GetSelectModeGroup().SetActive(true);
                 
             view.Popup(view.GetPopupPanel(), null);
         }
@@ -183,7 +177,6 @@ namespace LegendPingPong.MainMenu
                 {
                     case MenuCommand.Start:
                         model.MenuCommand = MenuCommand.None;
-                        view.GetSelectPlayersGroup().SetActive(false);
                         view.GetSelectModeGroup().SetActive(false);
                         view.GetPopupPanel().SetActive(false);
                         break;
@@ -218,23 +211,6 @@ namespace LegendPingPong.MainMenu
             {
                 view.GetExitPanel().SetActive(false);
             });
-        }
-
-        private void SelectSingleModeCommand()
-        {
-            // Single 버튼을 눌렀을 때 SingleGroup을 Active
-            view.GetPopupPanel().SetActive(true);
-            view.GetSelectPlayersGroup().SetActive(false); view.GetSelectModeGroup().SetActive(true);
-            view.GetSingleModeGroup().SetActive(true); view.GetLocalMultiModeGroup().SetActive(false);
-            
-        }
-        
-        private void SelectLocalMultiModeCommand()
-        {
-            // LocalMulti 버튼을 눌렀을 때 LocalMultiGroup을 Active
-            view.GetPopupPanel().SetActive(true);
-            view.GetSelectPlayersGroup().SetActive(false); view.GetSelectModeGroup().SetActive(true);
-            view.GetSingleModeGroup().SetActive(false); view.GetLocalMultiModeGroup().SetActive(true);
         }
 
         private void SelectClassicModeGroup()
