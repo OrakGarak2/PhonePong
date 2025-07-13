@@ -74,6 +74,8 @@ public class DrawLineZone : TouchZone
         edgeCollider2D.points = pointPosList.ToArray();
 
         edgeCollider2D.enabled = true;
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.lineDraw, pointPos);
     }
 
     private void UpdateLine(Vector2 newPointPos, float distance)
