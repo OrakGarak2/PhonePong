@@ -13,6 +13,9 @@ public class FireballAbility : Ability, IBallAbility
 {
     [SerializeField] Color ballColor;
     [SerializeField] Gradient colorGradient;
+
+    [SerializeField] FireballParticle particle;
+
     [SerializeField] float speedMultiple = 2f;
 
     public override void Excute(AbilityPaddle paddle)
@@ -27,6 +30,11 @@ public class FireballAbility : Ability, IBallAbility
 
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.fireBall, ball.transform.position);
 
-        ball.AddResetEventListener(() => { ball.ResetColor(); ball.ResetSpeed(); ball.EmptyResetEvent(); });
+        Action action = () => { ball.ResetColor(); ball.ResetSpeed(); particle.Disable(); };
+        action += () => { ball.RemoveSkillResetEventListener(action); };
+
+        ball.AddSkillResetEventListener(action);
+
+        particle.SetBall(ball);
     }
 }
