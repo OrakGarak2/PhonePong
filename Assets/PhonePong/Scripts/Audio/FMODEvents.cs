@@ -11,6 +11,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference fireBall { get; private set; }
     [field: SerializeField] public EventReference paddleSizeUp { get; private set; }
     [field: SerializeField] public EventReference goal { get; private set; }
+    [field: SerializeField] public EventReference lineDraw { get; private set; }
+    [field: SerializeField] public EventReference buttonClick { get; private set; }
     [field: SerializeField] public EventReference music { get; private set; }
 
     public static FMODEvents Instance { get; private set; }
