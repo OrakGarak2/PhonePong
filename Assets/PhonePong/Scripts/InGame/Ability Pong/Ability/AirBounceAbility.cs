@@ -30,11 +30,12 @@ public class AirBounceAbility : Ability, IBallAbility
         while (movingDistance < bounceDistance)
         {
             movingDistance += Vector2.Distance(rb2D.position, beforePos);
-            Debug.Log($"movingDistance: {movingDistance}, bounceDistance: {bounceDistance}");
             beforePos = rb2D.position;
             yield return null;
         }
 
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.ballVoidBounce, rb2D.position);
+        
         float minusSignVelocityY = Mathf.Sign(-rb2D.linearVelocityY);
         float maxBouncedVelocityY = Mathf.Abs(rb2D.linearVelocityX) + Mathf.Abs(rb2D.linearVelocityY);
 

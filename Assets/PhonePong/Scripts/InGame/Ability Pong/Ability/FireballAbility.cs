@@ -24,6 +24,9 @@ public class FireballAbility : Ability, IBallAbility
     {
         ball.ChangeColor(ballColor, colorGradient);
         ball.MultiplySpeed(speedMultiple);
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.fireBall, ball.transform.position);
+
         ball.AddResetEventListener(() => { ball.ResetColor(); ball.ResetSpeed(); ball.EmptyResetEvent(); });
     }
 }

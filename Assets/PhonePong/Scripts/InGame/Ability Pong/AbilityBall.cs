@@ -6,15 +6,15 @@ using System.Collections.Generic;
 // Unity
 using UnityEngine;
 
+// 
+
 public class AbilityBall : Ball
 {
+    [SerializeField] private Gradient originalGridient;
+
     [Header("스프라이트")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color originalColor;
-
-    [Header("트레일")]
-    [SerializeField] private TrailRenderer trailRenderer;
-    [SerializeField] private Gradient originalGridient;
 
     [Header("패들(임시)")]
     [SerializeField] private AbilityPaddle[] paddles;
@@ -59,33 +59,8 @@ public class AbilityBall : Ball
         ResetColor();
 
         resetEvent?.Invoke();
-        trailRenderer.enabled = false;
-
-        ResetSpeed();
-        ResetAcceleration();
-
-        // 분명 (0, 0)으로 초기화했는데도 가끔씩 velocity가 (0, 0)이 안되고 스스로 튕겨나가는 버그가 일어나서 때문에 고정
-        float timer = 0;
-        while (timer < resetWaitTime)
-        {
-            rb2D.position = Vector2.zero;
-            rb2D.linearVelocity = Vector2.zero;
-
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        float startDirectionY = UnityEngine.Random.Range(-startDirectionRangeY, startDirectionRangeY);
-        float startDirectionX = UnityEngine.Random.Range(startDirectionY >= 0 ? startDirectionY : -startDirectionRangeX,
-                                                        startDirectionY >= 0 ? startDirectionRangeX : startDirectionY);
-
-        Vector2 startDirection = new Vector2(startDirectionX, startDirectionY).normalized;
-
-        rb2D.linearVelocity = startDirection * CurrentSpeed;
-
-        currentResetCoroutine = null;
         
-        trailRenderer.enabled = true;
+        return base.CoroutineReset();
     }
 
     protected override void OnCollisionEnter2D(Collision2D col)
@@ -109,6 +84,8 @@ public class AbilityBall : Ball
 
             rb2D.linearVelocity = new Vector2(x, y);
         }
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.ballBounce, transform.position);
 
         rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
     }

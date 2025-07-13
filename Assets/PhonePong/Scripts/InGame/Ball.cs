@@ -30,6 +30,9 @@ public class Ball : MonoBehaviour
     [SerializeField] protected bool dontDestroyOnGoal;
     public bool DontDestroyOnGoal => dontDestroyOnGoal;
 
+    [Header("트레일")]
+    [SerializeField] protected TrailRenderer trailRenderer;
+
     protected const int paddleLayer = LayerDatas.paddleLayer;
     protected const float resetWaitTime = 1f;
 
@@ -61,6 +64,8 @@ public class Ball : MonoBehaviour
 
     protected virtual IEnumerator CoroutineReset()
     {
+        trailRenderer.enabled = false;
+        
         ResetSpeed();
         ResetAcceleration();
 
@@ -70,7 +75,7 @@ public class Ball : MonoBehaviour
         {
             rb2D.position = Vector2.zero;
             rb2D.linearVelocity = Vector2.zero;
-            
+
             timer += Time.deltaTime;
             yield return null;
         }
@@ -84,6 +89,8 @@ public class Ball : MonoBehaviour
         rb2D.linearVelocity = startDirection * CurrentSpeed;
 
         currentResetCoroutine = null;
+        
+        trailRenderer.enabled = true;
     }
 
     public void ResetSpeed() => currentSpeed = originalSpeed;
@@ -110,6 +117,8 @@ public class Ball : MonoBehaviour
 
             rb2D.linearVelocity = new Vector2(x, y);
         }
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.ballBounce, transform.position);
 
         rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
     }

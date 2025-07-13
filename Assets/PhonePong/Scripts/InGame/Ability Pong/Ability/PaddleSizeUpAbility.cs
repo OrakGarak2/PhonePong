@@ -30,6 +30,7 @@ public class PaddleSizeUpAbility : Ability, IPaddleAbility
 
     private IEnumerator CoroutineSizeUp(AbilityPaddle paddle)
     {
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.paddleSizeUp, paddle.transform.position);
         paddle.ChangeSize(new Vector2(paddle.transform.localScale.x, paddle.transform.localScale.y * sizeMultiple));
 
         yield return new WaitForSeconds(holdingTime);
@@ -43,7 +44,7 @@ public class PaddleSizeUpAbility : Ability, IPaddleAbility
         {
             StopCoroutine(currentCoroutine);
         }
-        
+
         paddle.ResetSize();
     }
 }

@@ -37,5 +37,7 @@ public class DummyBallAbility : Ability, IBallAbility
                 .GetComponent<DummyBall>();
             dummyBall.SetDummyBall(ball, new Vector2(dummyBalldirectionX, Random.Range(-1f, 1f)));
         }
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.generateDummyBall, ball.transform.position);
     }
 }
