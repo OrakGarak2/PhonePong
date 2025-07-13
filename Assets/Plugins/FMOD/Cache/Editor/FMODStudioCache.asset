@@ -82,7 +82,7 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638880504195500946
+  lastModified: 638880556490424455
   FileSizes:
   - Name: Desktop
     Value: 4493632
@@ -277,7 +277,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -4443792824310139801}
   cacheVersion: 131847
-  cacheTime: 638880504195500946
+  cacheTime: 638880556490424455
   SerializableEventsDict:
   - key: event:/Music/InGame
     index: 0
@@ -299,6 +299,8 @@ MonoBehaviour:
     index: 8
   - key: event:/SFX/BallWallBounce
     index: 9
+  - key: event:/Music/OutGame
+    index: 10
 --- !u!114 &874353209445279484
 MonoBehaviour:
   m_ObjectHideFlags: 0

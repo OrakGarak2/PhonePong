@@ -35,7 +35,7 @@ public class GoalLine : MonoBehaviour
                 }
                 else
                     ball.Reset();
-                SceneManager.LoadScene(SceneName.MainMenuScene);
+                StartCoroutine(ExitGame());
             }
             else
             {
