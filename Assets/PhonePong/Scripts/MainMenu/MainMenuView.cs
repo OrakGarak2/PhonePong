@@ -84,6 +84,8 @@ namespace LegendPingPong.MainMenu
             
             seounghunButton.onClick.AddListener(() => presenter.OnClickSeounghunImage());
             junsangButton.onClick.AddListener(() => presenter.OnClickJunsangImage());
+            
+            AudioManager.Instance.InitializeMusic(FMODEvents.Instance.outGame);
         }
 
         #region Initialize

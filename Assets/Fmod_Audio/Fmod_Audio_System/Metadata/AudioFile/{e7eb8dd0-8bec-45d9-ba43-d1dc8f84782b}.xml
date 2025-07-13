@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{e7eb8dd0-8bec-45d9-ba43-d1dc8f84782b}">
+		<property name="assetPath">
+			<value>Music/OutGameBGM.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>137.976</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ec0cb671-475b-46b9-a789-35b6f3a534c2}</destination>
+		</relationship>
+	</object>
+</objects>

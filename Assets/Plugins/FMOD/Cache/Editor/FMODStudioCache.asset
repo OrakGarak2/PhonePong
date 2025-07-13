@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638880460343932372
+  lastModified: 638880504194876215
   FileSizes:
   - Name: Desktop
     Value: 1378
@@ -82,10 +82,10 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638880464932187269
+  lastModified: 638880504195500946
   FileSizes:
   - Name: Desktop
-    Value: 2755424
+    Value: 4493632
   Exists: 1
 --- !u!114 &-4443792824310139801
 MonoBehaviour:
@@ -102,10 +102,10 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638880460343961181
+  lastModified: 638880504194902612
   FileSizes:
   - Name: Desktop
-    Value: 1354
+    Value: 1404
   Exists: 1
 --- !u!114 &-2952704460930843961
 MonoBehaviour:
@@ -270,13 +270,14 @@ MonoBehaviour:
   - {fileID: -2078296987376989786}
   - {fileID: -2230154266612305029}
   - {fileID: -2952704460930843961}
+  - {fileID: 2334268832013415720}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8234313479639953150}
   StringsBanks:
   - {fileID: -4443792824310139801}
   cacheVersion: 131847
-  cacheTime: 638880464932187269
+  cacheTime: 638880504195500946
   SerializableEventsDict:
   - key: event:/Music/InGame
     index: 0
@@ -325,6 +326,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &2334268832013415720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/OutGame
+  m_EditorClassIdentifier: 
+  Path: event:/Music/OutGame
+  Guid:
+    Data1: 978778106
+    Data2: 1084884818
+    Data3: 1272256951
+    Data4: -1038997282
+  Banks:
+  - {fileID: -7010596103362017271}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 134476
 --- !u!114 &2678383526521775124
 MonoBehaviour:
   m_ObjectHideFlags: 0
