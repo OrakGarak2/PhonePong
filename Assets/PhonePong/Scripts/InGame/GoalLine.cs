@@ -30,7 +30,7 @@ public class GoalLine : MonoBehaviour
             {
                 if (isMaxScore)
                 {
-                    SceneManager.LoadScene(SceneName.MainMenuScene);
+                    StartCoroutine(ExitGame());
                     ball.gameObject.SetActive(false);
                 }
                 else
@@ -41,5 +41,13 @@ public class GoalLine : MonoBehaviour
                 Destroy(ball.gameObject);
             }
         }
+    }
+
+    private IEnumerator ExitGame()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(1f);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneName.MainMenuScene);
     }
 }
