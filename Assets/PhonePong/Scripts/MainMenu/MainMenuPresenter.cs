@@ -88,6 +88,7 @@ namespace LegendPingPong.MainMenu
         {
             if (commands.TryGetValue(command, out var commandResult))
             {
+                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.buttonClick, AudioManager.Instance.transform.position);
                 commandResult.Execute();
             }
         }

@@ -266,6 +266,20 @@ MonoBehaviour:
       Data3: -2019667522
       Data4: 960664101
     Path: event:/Goal
+  <lineDraw>k__BackingField:
+    Guid:
+      Data1: -1423022035
+      Data2: 1244713587
+      Data3: -2092502349
+      Data4: 130206474
+    Path: event:/LineDraw
+  <buttonClick>k__BackingField:
+    Guid:
+      Data1: -441032113
+      Data2: 1203118331
+      Data3: -630672708
+      Data4: 1829732001
+    Path: event:/ButtonClick
   <music>k__BackingField:
     Guid:
       Data1: 0
