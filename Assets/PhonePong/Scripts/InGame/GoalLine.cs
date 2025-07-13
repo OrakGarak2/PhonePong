@@ -23,6 +23,7 @@ public class GoalLine : MonoBehaviour
         Ball ball = collision.gameObject.GetComponent<Ball>();
         if (ball != null)
         {
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.goal, ball.transform.position);
             bool isMaxScore = opponentScore.IncreaseScore();
             
             if (ball.DontDestroyOnGoal)
@@ -32,7 +33,8 @@ public class GoalLine : MonoBehaviour
                     SceneManager.LoadScene(SceneName.MainMenuScene);
                     ball.gameObject.SetActive(false);
                 }
-                else            ball.Reset();
+                else
+                    ball.Reset();
             }
             else
             {
