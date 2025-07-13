@@ -15,6 +15,7 @@ public class AbilityPaddle : Paddle
     [SerializeField] PlayerEnum playerEnum;
     public PlayerEnum PlayerEnum => playerEnum;
     private Action<AbilityBall> ballAbilityAction;
+    private Action<AbilityPaddle> resetAction;
 
     private Vector2 originalScale;
 
@@ -26,9 +27,15 @@ public class AbilityPaddle : Paddle
         originalScale = transform.localScale;
     }
 
-    public void SetAbility(Action<AbilityBall> action)
+    public void SetAbility(Action<AbilityBall> abilityAction)
     {
-        ballAbilityAction = action;
+        ballAbilityAction = abilityAction;
+    }
+
+    public void SetAbility(Action<AbilityBall> abilityAction, Action<AbilityPaddle> paddleResetAction)
+    {
+        ballAbilityAction = abilityAction;
+        resetAction += paddleResetAction;
     }
 
     public void ExcuteAbility(AbilityBall abilityBall)
@@ -40,6 +47,11 @@ public class AbilityPaddle : Paddle
     public void Reset()
     {
         ballAbilityAction = null;
-        transform.localScale = originalScale;
+
+        resetAction?.Invoke(this);
+        resetAction = null;
     }
+
+    public void ChangeSize(Vector2 newSize) => transform.localScale = newSize;
+    public void ResetSize() => transform.localScale = originalScale;
 }

@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb2D;
 
     [Header("이동속도")]
-    [SerializeField] private float originalSpeed;
+    [SerializeField] protected float originalSpeed;
     [SerializeField] protected float currentSpeed;
     [SerializeField] protected float acceleration = 1f;
     protected const float accelerationIncreaseRate = 0.05f;
@@ -23,15 +23,18 @@ public class Ball : MonoBehaviour
     public float CurrentSpeed { get { return currentSpeed * acceleration <= maxSpeed ? currentSpeed * acceleration : maxSpeed; } }
 
     [Header("초기 값 설정")]
-    [SerializeField][Range(0, 10f)] private float startDirectionRangeX;
-    [SerializeField][Range(0, 10f)] private float startDirectionRangeY;
+    [SerializeField][Range(0, 10f)] protected float startDirectionRangeX;
+    [SerializeField][Range(0, 10f)] protected float startDirectionRangeY;
 
     [Header("파괴 여부")]
     [SerializeField] protected bool dontDestroyOnGoal;
     public bool DontDestroyOnGoal => dontDestroyOnGoal;
 
+    [Header("트레일")]
+    [SerializeField] protected TrailRenderer trailRenderer;
+
     protected const int paddleLayer = LayerDatas.paddleLayer;
-    private const float resetWaitTime = 1f;
+    protected const float resetWaitTime = 1f;
 
     protected Coroutine currentResetCoroutine;
 
@@ -61,10 +64,21 @@ public class Ball : MonoBehaviour
 
     protected virtual IEnumerator CoroutineReset()
     {
+        trailRenderer.enabled = false;
+        
         ResetSpeed();
         ResetAcceleration();
 
-        yield return new WaitForSeconds(resetWaitTime);
+        // 분명 (0, 0)으로 초기화했는데도 가끔씩 velocity가 (0, 0)이 안되고 스스로 튕겨나가는 버그가 일어나서 때문에 고정
+        float timer = 0;
+        while (timer < resetWaitTime)
+        {
+            rb2D.position = Vector2.zero;
+            rb2D.linearVelocity = Vector2.zero;
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
 
         float startDirectionY = UnityEngine.Random.Range(-startDirectionRangeY, startDirectionRangeY);
         float startDirectionX = UnityEngine.Random.Range(startDirectionY >= 0 ? startDirectionY : -startDirectionRangeX,
@@ -75,6 +89,8 @@ public class Ball : MonoBehaviour
         rb2D.linearVelocity = startDirection * CurrentSpeed;
 
         currentResetCoroutine = null;
+        
+        trailRenderer.enabled = true;
     }
 
     public void ResetSpeed() => currentSpeed = originalSpeed;
@@ -101,6 +117,8 @@ public class Ball : MonoBehaviour
 
             rb2D.linearVelocity = new Vector2(x, y);
         }
+
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.ballBounce, transform.position);
 
         rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
     }

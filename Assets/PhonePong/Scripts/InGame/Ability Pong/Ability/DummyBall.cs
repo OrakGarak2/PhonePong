@@ -24,7 +24,7 @@ public class DummyBall : Ball
     {
         this.abilityBall = abilityBall;
 
-        this.abilityBall.AddResetEventListener(Reset);
+        this.abilityBall.AddSkillResetEventListener(Reset);
 
         rb2D.linearVelocity = velocity.normalized * CurrentSpeed;
     }
@@ -61,6 +61,6 @@ public class DummyBall : Ball
 
     private void OnDisable()
     {
-        abilityBall.RemoveResetEventListener(Reset);
+        abilityBall.RemoveSkillResetEventListener(Reset);
     }
 }

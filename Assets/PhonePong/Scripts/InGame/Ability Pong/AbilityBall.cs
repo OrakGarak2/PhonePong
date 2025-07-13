@@ -6,8 +6,12 @@ using System.Collections.Generic;
 // Unity
 using UnityEngine;
 
+// 
+
 public class AbilityBall : Ball
 {
+    [SerializeField] private Gradient originalGridient;
+
     [Header("스프라이트")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Color originalColor;
@@ -15,25 +19,37 @@ public class AbilityBall : Ball
     [Header("패들(임시)")]
     [SerializeField] private AbilityPaddle[] paddles;
 
-    private event Action resetEvent;
+    private event Action skillResetEvent;
+    private event Action paddleResetEvent;
 
     public Rigidbody2D Rb2D => rb2D;
 
     protected override void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        trailRenderer = GetComponent<TrailRenderer>();
         originalColor = spriteRenderer.color;
 
         foreach (var paddle in paddles)
         {
-            AddResetEventListener(paddle.Reset);
+            paddleResetEvent += paddle.Reset;
         }
 
         base.Start();
     }
 
-    public void ChangeColor(Color newColor) => spriteRenderer.color = newColor;
-    public void ResetColor() => spriteRenderer.color = originalColor;
+    public void ChangeColor(Color newColor, Gradient gradient)
+    {
+        spriteRenderer.color = newColor;
+        trailRenderer.colorGradient = gradient;
+    }
+
+    public void ResetColor()
+    {
+        spriteRenderer.color = originalColor;
+        trailRenderer.colorGradient = originalGridient;
+    }
+
     public void MultiplySpeed(float speedMultiple)
     {
         currentSpeed *= speedMultiple;
@@ -43,8 +59,9 @@ public class AbilityBall : Ball
     {
         ResetColor();
 
-        resetEvent?.Invoke();
-
+        skillResetEvent?.Invoke();
+        paddleResetEvent?.Invoke();
+        
         return base.CoroutineReset();
     }
 
@@ -52,10 +69,7 @@ public class AbilityBall : Ball
     {
         if (col.gameObject.layer == paddleLayer)
         {
-            AbilityPaddle abilityPaddle =  col.transform.GetComponent<AbilityPaddle>();
-            
-            ResetColor();
-            ResetSpeed();
+            skillResetEvent?.Invoke();
 
             col.transform.GetComponent<AbilityPaddle>().ExcuteAbility(this);
 
@@ -72,21 +86,24 @@ public class AbilityBall : Ball
             rb2D.linearVelocity = new Vector2(x, y);
         }
 
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.ballBounce, transform.position);
+
         rb2D.linearVelocity = rb2D.linearVelocity.normalized * CurrentSpeed;
     }
 
-    public void AddResetEventListener(Action action)
+    public void AddSkillResetEventListener(Action action)
     {
-        resetEvent += action;
+        skillResetEvent += action;
     }
 
-    public void RemoveResetEventListener(Action action)
+    public void RemoveSkillResetEventListener(Action action)
     {
-        resetEvent -= action;
+        skillResetEvent -= action;
     }
 
     private void OnDestroy()
     {
-        resetEvent = null;
+        skillResetEvent = null;
+        paddleResetEvent = null;
     }
 }
