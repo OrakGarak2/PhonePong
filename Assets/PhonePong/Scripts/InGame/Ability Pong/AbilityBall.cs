@@ -59,6 +59,8 @@ public class AbilityBall : Ball
         ResetColor();
 
         skillResetEvent?.Invoke();
+        skillResetEvent = null;
+        
         paddleResetEvent?.Invoke();
         
         return base.CoroutineReset();
@@ -69,6 +71,7 @@ public class AbilityBall : Ball
         if (col.gameObject.layer == paddleLayer)
         {
             skillResetEvent?.Invoke();
+            skillResetEvent = null;
 
             col.transform.GetComponent<AbilityPaddle>().ExcuteAbility(this);
 

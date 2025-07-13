@@ -30,10 +30,7 @@ public class FireballAbility : Ability, IBallAbility
 
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.fireBall, ball.transform.position);
 
-        Action action = () => { ball.ResetColor(); ball.ResetSpeed(); particle.Disable(); };
-        action += () => { ball.RemoveSkillResetEventListener(action); };
-
-        ball.AddSkillResetEventListener(action);
+        ball.AddSkillResetEventListener(() => { ball.ResetColor(); ball.ResetSpeed(); particle.Disable(); });
 
         particle.SetBall(ball);
     }
