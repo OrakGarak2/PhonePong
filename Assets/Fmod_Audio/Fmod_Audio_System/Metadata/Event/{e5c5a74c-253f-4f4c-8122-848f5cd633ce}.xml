@@ -5,7 +5,7 @@
 			<value>BallVoidBounce</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{3c0e7560-9e46-4a2b-9e98-d3a1920a3a32}</destination>
@@ -82,7 +82,11 @@
 			<destination>{28106b0d-5515-4163-aae6-77048aac0420}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{e8de38c2-178d-499b-9d67-a56ad8ac8099}" />
+	<object class="MultiSound" id="{e8de38c2-178d-499b-9d67-a56ad8ac8099}">
+		<relationship name="sounds">
+			<destination>{ef15248e-cc45-44d1-a28a-6221db371e78}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{61614a30-10f2-4760-bad2-420177ccd2b7}">
 		<relationship name="effects">
 			<destination>{4f8eaf1c-2f25-4371-9aa1-af129fafda81}</destination>
@@ -95,6 +99,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{18a98bf3-088c-41e5-b071-0c5b62fb1b0c}" />
+	<object class="SingleSound" id="{ef15248e-cc45-44d1-a28a-6221db371e78}">
+		<property name="startOffset">
+			<value>45</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{a886c0e9-e6a2-47a3-912a-6e767debeb38}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{4f8eaf1c-2f25-4371-9aa1-af129fafda81}" />
 	<object class="MixerBusFader" id="{4e1651f4-44f6-4930-be09-f8fabb984eaf}" />
 </objects>

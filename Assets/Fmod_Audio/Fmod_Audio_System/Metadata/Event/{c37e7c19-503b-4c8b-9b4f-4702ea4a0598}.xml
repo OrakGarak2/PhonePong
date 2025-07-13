@@ -5,7 +5,7 @@
 			<value>PaddleSizeup</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{3c0e7560-9e46-4a2b-9e98-d3a1920a3a32}</destination>
@@ -82,7 +82,11 @@
 			<destination>{60c5d337-738f-4961-b41d-af881d0c9e94}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{7ec1694b-d169-4405-8f6f-dc715fecb3a9}" />
+	<object class="MultiSound" id="{7ec1694b-d169-4405-8f6f-dc715fecb3a9}">
+		<relationship name="sounds">
+			<destination>{8679e4b3-8f27-4ad9-a7a2-2d4c2a79891c}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{84d6c380-c396-4df5-984f-883a46a06c7a}">
 		<relationship name="effects">
 			<destination>{a235c428-d8e1-4b13-9510-71f65ce75e10}</destination>
@@ -95,6 +99,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f4b4bf17-c72d-453c-81d4-44396f367ca9}" />
+	<object class="SingleSound" id="{8679e4b3-8f27-4ad9-a7a2-2d4c2a79891c}">
+		<relationship name="audioFile">
+			<destination>{3a739d10-61dd-4652-a62a-b99d51f88466}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{a235c428-d8e1-4b13-9510-71f65ce75e10}" />
 	<object class="MixerBusFader" id="{fa7ac2eb-4d1f-4714-bb5a-5172010a7b6a}" />
 </objects>

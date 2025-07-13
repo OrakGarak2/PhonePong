@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638859623275199464
+  lastModified: 638880316720796122
   FileSizes:
   - Name: Desktop
     Value: 1378
@@ -62,11 +62,38 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638859623275275717
+  lastModified: 638880328676685423
   FileSizes:
   - Name: Desktop
-    Value: 4912
+    Value: 40416
   Exists: 1
+--- !u!114 &-6695483592912599454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PaddleSizeup
+  m_EditorClassIdentifier: 
+  Path: event:/PaddleSizeup
+  Guid:
+    Data1: -1015120871
+    Data2: 1284198459
+    Data3: 38227867
+    Data4: -1744483606
+  Banks:
+  - {fileID: -7540058835382475287}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-4443792824310139801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +109,7 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638859623275228304
+  lastModified: 638880316720821851
   FileSizes:
   - Name: Desktop
     Value: 1120
@@ -131,31 +158,31 @@ MonoBehaviour:
   - {fileID: -8234313479639953150}
   - {fileID: -7540058835382475287}
   EditorEvents:
-  - {fileID: 2798827735495516984}
   - {fileID: -8209422600333450888}
   - {fileID: 532930382956317482}
   - {fileID: 4521006439662197435}
   - {fileID: -1306386269367433135}
   - {fileID: 2652471812190390145}
+  - {fileID: -6695483592912599454}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8234313479639953150}
   StringsBanks:
   - {fileID: -4443792824310139801}
   cacheVersion: 131847
-  cacheTime: 638859623275275717
+  cacheTime: 638880328676685423
   SerializableEventsDict:
-  - key: event:/RacketSizeup
-    index: 0
   - key: event:/Fireball
-    index: 1
+    index: 0
   - key: event:/SkillSelect
-    index: 2
+    index: 1
   - key: event:/BallVoidBounce
-    index: 3
+    index: 2
   - key: event:/Dummyball
-    index: 4
+    index: 3
   - key: event:/BallWallBounce
+    index: 4
+  - key: event:/PaddleSizeup
     index: 5
 --- !u!114 &532930382956317482
 MonoBehaviour:
@@ -202,33 +229,6 @@ MonoBehaviour:
     Data2: 1115518042
     Data3: -1300212066
     Data4: -1237883527
-  Banks:
-  - {fileID: -7540058835382475287}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &2798827735495516984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/RacketSizeup
-  m_EditorClassIdentifier: 
-  Path: event:/RacketSizeup
-  Guid:
-    Data1: -1015120871
-    Data2: 1284198459
-    Data3: 38227867
-    Data4: -1744483606
   Banks:
   - {fileID: -7540058835382475287}
   IsStream: 0
