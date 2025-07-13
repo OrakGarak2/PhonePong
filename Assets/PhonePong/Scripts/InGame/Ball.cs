@@ -41,6 +41,7 @@ public class Ball : MonoBehaviour
     protected virtual void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        trailRenderer = GetComponent<TrailRenderer>();
 
         SetDontDestroyOnGoal();
 

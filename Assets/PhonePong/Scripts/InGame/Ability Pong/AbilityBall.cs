@@ -27,7 +27,6 @@ public class AbilityBall : Ball
     protected override void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        trailRenderer = GetComponent<TrailRenderer>();
         originalColor = spriteRenderer.color;
 
         foreach (var paddle in paddles)
