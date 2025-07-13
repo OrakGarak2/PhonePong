@@ -19,8 +19,8 @@ public class AbilityBall : Ball
     [Header("패들(임시)")]
     [SerializeField] private AbilityPaddle[] paddles;
 
-    private event Action skillResetEvent;
-    private event Action paddleResetEvent;
+    private event Action softResetEvent;
+    private event Action hardResetEvent;
 
     public Rigidbody2D Rb2D => rb2D;
 
@@ -31,7 +31,7 @@ public class AbilityBall : Ball
 
         foreach (var paddle in paddles)
         {
-            paddleResetEvent += paddle.Reset;
+            hardResetEvent += paddle.Reset;
         }
 
         base.Start();
@@ -58,10 +58,10 @@ public class AbilityBall : Ball
     {
         ResetColor();
 
-        skillResetEvent?.Invoke();
-        skillResetEvent = null;
+        softResetEvent?.Invoke();
+        softResetEvent = null;
         
-        paddleResetEvent?.Invoke();
+        hardResetEvent?.Invoke();
         
         return base.CoroutineReset();
     }
@@ -70,8 +70,8 @@ public class AbilityBall : Ball
     {
         if (col.gameObject.layer == paddleLayer)
         {
-            skillResetEvent?.Invoke();
-            skillResetEvent = null;
+            softResetEvent?.Invoke();
+            softResetEvent = null;
 
             col.transform.GetComponent<AbilityPaddle>().ExcuteAbility(this);
 
@@ -95,17 +95,22 @@ public class AbilityBall : Ball
 
     public void AddSkillResetEventListener(Action action)
     {
-        skillResetEvent += action;
+        softResetEvent += action;
     }
 
-    public void RemoveSkillResetEventListener(Action action)
+    public void AddHardResetEventListener(Action action)
     {
-        skillResetEvent -= action;
+        hardResetEvent += action;
+    }
+
+    public void RemoveHardResetEventListener(Action action)
+    {
+        hardResetEvent -= action;
     }
 
     private void OnDestroy()
     {
-        skillResetEvent = null;
-        paddleResetEvent = null;
+        softResetEvent = null;
+        hardResetEvent = null;
     }
 }

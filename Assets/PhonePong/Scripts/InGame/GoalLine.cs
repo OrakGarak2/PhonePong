@@ -25,8 +25,8 @@ public class GoalLine : MonoBehaviour
         {
             AudioManager.Instance.PlayOneShot(FMODEvents.Instance.goal, ball.transform.position);
             bool isMaxScore = opponentScore.IncreaseScore();
-            
-            if (ball.DontDestroyOnGoal)
+
+            if (isMaxScore)
             {
                 if (isMaxScore)
                 {
@@ -35,10 +35,18 @@ public class GoalLine : MonoBehaviour
                 }
                 else
                     ball.Reset();
+                SceneManager.LoadScene(SceneName.MainMenuScene);
             }
             else
             {
-                Destroy(ball.gameObject);
+                if (ball.DontDestroyOnGoal)
+                {
+                    ball.Reset();
+                }
+                else
+                {
+                    Destroy(ball.gameObject);
+                }
             }
         }
     }
