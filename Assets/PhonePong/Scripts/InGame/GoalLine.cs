@@ -9,6 +9,7 @@ using UnityEngine;
 
 // PhonePong
 using PhonePong.Layer;
+using UnityEngine.SceneManagement;
 
 public class GoalLine : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class GoalLine : MonoBehaviour
             {
                 if (isMaxScore)
                 {
-                    SceneLoader.LoadSceneAsync(this, sceneName: SceneName.MainMenuScene);
+                    SceneManager.LoadScene(SceneName.MainMenuScene);
                     ball.gameObject.SetActive(false);
                 }
                 else            ball.Reset();
