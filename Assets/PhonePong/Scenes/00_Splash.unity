@@ -231,6 +231,41 @@ MonoBehaviour:
       Data3: -1300212066
       Data4: -1237883527
     Path: event:/BallWallBounce
+  <ballVoidBounce>k__BackingField:
+    Guid:
+      Data1: -440031412
+      Data2: 1330390335
+      Data3: -1887165823
+      Data4: -835463588
+    Path: event:/BallVoidBounce
+  <generateDummyBall>k__BackingField:
+    Guid:
+      Data1: -349403761
+      Data2: 1256722436
+      Data3: -1231376457
+      Data4: -1725143333
+    Path: event:/Dummyball
+  <fireBall>k__BackingField:
+    Guid:
+      Data1: 1802022942
+      Data2: 1141997084
+      Data3: -2136658276
+      Data4: 1190794948
+    Path: event:/Fireball
+  <paddleSizeUp>k__BackingField:
+    Guid:
+      Data1: -1015120871
+      Data2: 1284198459
+      Data3: 38227867
+      Data4: -1744483606
+    Path: event:/PaddleSizeup
+  <goal>k__BackingField:
+    Guid:
+      Data1: 1087318177
+      Data2: 1252580727
+      Data3: -2019667522
+      Data4: 960664101
+    Path: event:/Goal
   <music>k__BackingField:
     Guid:
       Data1: 0

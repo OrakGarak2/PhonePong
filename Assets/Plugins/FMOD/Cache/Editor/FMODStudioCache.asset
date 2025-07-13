@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638880316720796122
+  lastModified: 638880346464833622
   FileSizes:
   - Name: Desktop
     Value: 1378
@@ -62,10 +62,10 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638880328676685423
+  lastModified: 638880346466701732
   FileSizes:
   - Name: Desktop
-    Value: 40416
+    Value: 49760
   Exists: 1
 --- !u!114 &-6695483592912599454
 MonoBehaviour:
@@ -109,10 +109,10 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638880316720821851
+  lastModified: 638880346464864471
   FileSizes:
   - Name: Desktop
-    Value: 1120
+    Value: 1156
   Exists: 1
 --- !u!114 &-1306386269367433135
 MonoBehaviour:
@@ -164,13 +164,14 @@ MonoBehaviour:
   - {fileID: -1306386269367433135}
   - {fileID: 2652471812190390145}
   - {fileID: -6695483592912599454}
+  - {fileID: 1581582711412119855}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8234313479639953150}
   StringsBanks:
   - {fileID: -4443792824310139801}
   cacheVersion: 131847
-  cacheTime: 638880328676685423
+  cacheTime: 638880346466701732
   SerializableEventsDict:
   - key: event:/Fireball
     index: 0
@@ -184,6 +185,8 @@ MonoBehaviour:
     index: 4
   - key: event:/PaddleSizeup
     index: 5
+  - key: event:/Goal
+    index: 6
 --- !u!114 &532930382956317482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +205,33 @@ MonoBehaviour:
     Data2: 1296375399
     Data3: 89497994
     Data4: -1101363203
+  Banks:
+  - {fileID: -7540058835382475287}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &1581582711412119855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Goal
+  m_EditorClassIdentifier: 
+  Path: event:/Goal
+  Guid:
+    Data1: 1087318177
+    Data2: 1252580727
+    Data3: -2019667522
+    Data4: 960664101
   Banks:
   - {fileID: -7540058835382475287}
   IsStream: 0
