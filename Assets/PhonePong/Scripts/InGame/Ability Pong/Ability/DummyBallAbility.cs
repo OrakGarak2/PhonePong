@@ -4,7 +4,7 @@ using UnityEngine;
 // PhonePong
 using PhonePong.Enum;
 
-public class DummyBallAbility : Ability
+public class DummyBallAbility : Ability, IBallAbility
 {
     [SerializeField] private GameObject dummyBallPrefab;
     [SerializeField] private PlayerEnum paddlePlayerEnum;
@@ -13,7 +13,7 @@ public class DummyBallAbility : Ability
 
     public override void Excute(AbilityPaddle paddle)
     {
-        paddle.SetAbility((AbilityBall ball) => UseAbility(ball));
+        paddle.SetAbility(UseAbility);
 
         paddlePlayerEnum = paddle.PlayerEnum;
     }
@@ -37,6 +37,5 @@ public class DummyBallAbility : Ability
                 .GetComponent<DummyBall>();
             dummyBall.SetDummyBall(ball, new Vector2(dummyBalldirectionX, Random.Range(-1f, 1f)));
         }
-        
     }
 }

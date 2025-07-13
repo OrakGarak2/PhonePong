@@ -6,7 +6,7 @@ using System.Collections.Generic;
 // Unity
 using UnityEngine;
 
-public class AirBounceAbility : Ability
+public class AirBounceAbility : Ability, IBallAbility
 {
     [SerializeField] float minAirBounceDistance = 8f;
     [SerializeField] float maxAirBounceDistance = 10f;

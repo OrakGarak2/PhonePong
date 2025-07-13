@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
     [SerializeField] protected Rigidbody2D rb2D;
 
     [Header("이동속도")]
-    [SerializeField] private float originalSpeed;
+    [SerializeField] protected float originalSpeed;
     [SerializeField] protected float currentSpeed;
     [SerializeField] protected float acceleration = 1f;
     protected const float accelerationIncreaseRate = 0.05f;
@@ -23,15 +23,15 @@ public class Ball : MonoBehaviour
     public float CurrentSpeed { get { return currentSpeed * acceleration <= maxSpeed ? currentSpeed * acceleration : maxSpeed; } }
 
     [Header("초기 값 설정")]
-    [SerializeField][Range(0, 10f)] private float startDirectionRangeX;
-    [SerializeField][Range(0, 10f)] private float startDirectionRangeY;
+    [SerializeField][Range(0, 10f)] protected float startDirectionRangeX;
+    [SerializeField][Range(0, 10f)] protected float startDirectionRangeY;
 
     [Header("파괴 여부")]
     [SerializeField] protected bool dontDestroyOnGoal;
     public bool DontDestroyOnGoal => dontDestroyOnGoal;
 
     protected const int paddleLayer = LayerDatas.paddleLayer;
-    private const float resetWaitTime = 1f;
+    protected const float resetWaitTime = 1f;
 
     protected Coroutine currentResetCoroutine;
 

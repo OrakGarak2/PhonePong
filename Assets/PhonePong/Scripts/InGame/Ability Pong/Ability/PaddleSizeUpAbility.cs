@@ -6,24 +6,44 @@ using System.Collections.Generic;
 // Unity
 using UnityEngine;
 
-public class PaddleSizeUpAbility : Ability
+public class PaddleSizeUpAbility : Ability, IPaddleAbility
 {
     [SerializeField] private float sizeMultiple = 1.5f;
+    [SerializeField] private Coroutine currentCoroutine;
     private const float holdingTime = 2f;
 
     public override void Excute(AbilityPaddle paddle)
     {
-        paddle.StartCoroutine(CoroutineSizeUp(paddle.transform));
+        UseAbility(paddle);
     }
 
-    private IEnumerator CoroutineSizeUp(Transform paddleTransform)
+    public void UseAbility(AbilityPaddle paddle)
     {
-        float localScaleY = paddleTransform.localScale.y;
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+        currentCoroutine = paddle.StartCoroutine(CoroutineSizeUp(paddle));
 
-        paddleTransform.localScale = new Vector2(paddleTransform.localScale.x, localScaleY * sizeMultiple);
+        paddle.SetAbility(null, ResetPaddle);
+    }
+
+    private IEnumerator CoroutineSizeUp(AbilityPaddle paddle)
+    {
+        paddle.ChangeSize(new Vector2(paddle.transform.localScale.x, paddle.transform.localScale.y * sizeMultiple));
 
         yield return new WaitForSeconds(holdingTime);
 
-        paddleTransform.localScale = new Vector2(paddleTransform.localScale.x, localScaleY);
+        paddle.ResetSize();
+    }
+
+    public void ResetPaddle(AbilityPaddle paddle)
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+        
+        paddle.ResetSize();
     }
 }
