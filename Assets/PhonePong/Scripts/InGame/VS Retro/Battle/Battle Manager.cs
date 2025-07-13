@@ -6,6 +6,10 @@ using System.Collections.Generic;
 // Unity
 using UnityEngine;
 
+// PhonePong
+using PhonePong.VSRetro.Enmity;
+using Unity.VisualScripting;
+
 namespace PhonePong.VSRetro.Battle
 {
     public enum VSRetroTurn
@@ -24,12 +28,15 @@ namespace PhonePong.VSRetro.Battle
         [SerializeField] private BattlePaddle battlePaddle;
         public BattlePaddle BattlePaddle => battlePaddle;
 
+        [SerializeField] private Enemy enemy;
+        public Enemy Enemy => enemy;
+
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
-                // TODO: 공 생성 코드 작성 -> 작성함.
+
                 SpawnMainBall();
             }
             else
@@ -42,6 +49,11 @@ namespace PhonePong.VSRetro.Battle
         {
             MainBall = Instantiate(vsRetroBallPrefab, vsRetroBallPrefab.transform.position, Quaternion.identity).GetComponent<VSRetroBall>();
             MainBall.SetVSRetroBall(battlePaddle);
+        }
+
+        public void SpawnEnemy()
+        {
+
         }
     }
 }
