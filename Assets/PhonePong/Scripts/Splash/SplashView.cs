@@ -11,11 +11,6 @@ namespace LegendPingPong.Splash
     {
         [SerializeField] private Image panel;
 
-        private void Awake()
-        {
-            Application.targetFrameRate = 120;
-        }
-
         private void Start()
         {
             OnFadeOutPanel();

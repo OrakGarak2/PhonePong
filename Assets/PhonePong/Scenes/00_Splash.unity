@@ -569,69 +569,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fedc3bea16c14e042a561caf4006127a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <inGame>k__BackingField:
+    Guid:
+      Data1: 1384151020
+      Data2: 1117918326
+      Data3: -818927488
+      Data4: -1598115165
+    Path: event:/Music/InGame
   <ballBounce>k__BackingField:
     Guid:
       Data1: 733413838
       Data2: 1115518042
       Data3: -1300212066
       Data4: -1237883527
-    Path: event:/BallWallBounce
+    Path: event:/SFX/BallWallBounce
   <ballVoidBounce>k__BackingField:
     Guid:
       Data1: -440031412
       Data2: 1330390335
       Data3: -1887165823
       Data4: -835463588
-    Path: event:/BallVoidBounce
+    Path: event:/SFX/BallVoidBounce
   <generateDummyBall>k__BackingField:
     Guid:
       Data1: -349403761
       Data2: 1256722436
       Data3: -1231376457
       Data4: -1725143333
-    Path: event:/Dummyball
+    Path: event:/SFX/Dummyball
   <fireBall>k__BackingField:
     Guid:
       Data1: 1802022942
       Data2: 1141997084
       Data3: -2136658276
       Data4: 1190794948
-    Path: event:/Fireball
+    Path: event:/SFX/Fireball
   <paddleSizeUp>k__BackingField:
     Guid:
       Data1: -1015120871
       Data2: 1284198459
       Data3: 38227867
       Data4: -1744483606
-    Path: event:/PaddleSizeup
+    Path: event:/SFX/PaddleSizeup
   <goal>k__BackingField:
     Guid:
       Data1: 1087318177
       Data2: 1252580727
       Data3: -2019667522
       Data4: 960664101
-    Path: event:/Goal
+    Path: event:/SFX/Goal
   <lineDraw>k__BackingField:
     Guid:
       Data1: -1423022035
       Data2: 1244713587
       Data3: -2092502349
       Data4: 130206474
-    Path: event:/LineDraw
+    Path: event:/SFX/LineDraw
   <buttonClick>k__BackingField:
     Guid:
       Data1: -441032113
       Data2: 1203118331
       Data3: -630672708
       Data4: 1829732001
-    Path: event:/ButtonClick
-  <music>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+    Path: event:/SFX/ButtonClick
 --- !u!4 &1323450803
 Transform:
   m_ObjectHideFlags: 0

@@ -184,6 +184,7 @@ public class PauseManager : MonoBehaviour
     private void Exit()
     {
         Time.timeScale = 1;
+        AudioManager.Instance.StopMusic();
         SceneManager.LoadScene(SceneName.MainMenuScene);
     }
 

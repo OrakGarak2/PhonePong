@@ -4,6 +4,9 @@ using FMODUnity;
 
 public class FMODEvents : MonoBehaviour
 {
+    [field: Header("Music")]
+    [field: SerializeField] public EventReference inGame { get; private set; }
+    
     [field: Header("SFX")] 
     [field: SerializeField] public EventReference ballBounce { get; private set; }
     [field: SerializeField] public EventReference ballVoidBounce { get; private set; }
@@ -13,8 +16,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference goal { get; private set; }
     [field: SerializeField] public EventReference lineDraw { get; private set; }
     [field: SerializeField] public EventReference buttonClick { get; private set; }
-    [field: SerializeField] public EventReference music { get; private set; }
-
+    
     public static FMODEvents Instance { get; private set; }
 
     private void Awake()

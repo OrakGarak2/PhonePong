@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8412504643466740295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/ButtonClick
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/ButtonClick
+  Guid:
+    Data1: -441032113
+    Data2: 1203118331
+    Data3: -630672708
+    Data4: 1829732001
+  Banks:
+  - {fileID: -7540058835382475287}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8234313479639953150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,38 +42,11 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638880421354806320
+  lastModified: 638880460343932372
   FileSizes:
   - Name: Desktop
     Value: 1378
   Exists: 1
---- !u!114 &-8209422600333450888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Fireball
-  m_EditorClassIdentifier: 
-  Path: event:/Fireball
-  Guid:
-    Data1: 1802022942
-    Data2: 1141997084
-    Data3: -2136658276
-    Data4: 1190794948
-  Banks:
-  - {fileID: -7540058835382475287}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-7540058835382475287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,12 +62,12 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638880421356867948
+  lastModified: 638880460344407956
   FileSizes:
   - Name: Desktop
     Value: 65696
   Exists: 1
---- !u!114 &-6695483592912599454
+--- !u!114 &-7010596103362017271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,24 +76,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/PaddleSizeup
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
   m_EditorClassIdentifier: 
-  Path: event:/PaddleSizeup
-  Guid:
-    Data1: -1015120871
-    Data2: 1284198459
-    Data3: 38227867
-    Data4: -1744483606
-  Banks:
-  - {fileID: -7540058835382475287}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
+  Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638880464932187269
+  FileSizes:
+  - Name: Desktop
+    Value: 2755424
+  Exists: 1
 --- !u!114 &-4443792824310139801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,12 +102,12 @@ MonoBehaviour:
   Path: Assets/Fmod_Audio/Fmod_Audio_System/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638880421354848803
+  lastModified: 638880460343961181
   FileSizes:
   - Name: Desktop
-    Value: 1248
+    Value: 1354
   Exists: 1
---- !u!114 &-1306386269367433135
+--- !u!114 &-2952704460930843961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,9 +117,63 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Dummyball
+  m_Name: event:/SFX/BallWallBounce
   m_EditorClassIdentifier: 
-  Path: event:/Dummyball
+  Path: event:/SFX/BallWallBounce
+  Guid:
+    Data1: 733413838
+    Data2: 1115518042
+    Data3: -1300212066
+    Data4: -1237883527
+  Banks:
+  - {fileID: -7540058835382475287}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2230154266612305029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Goal
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Goal
+  Guid:
+    Data1: 1087318177
+    Data2: 1252580727
+    Data3: -2019667522
+    Data4: 960664101
+  Banks:
+  - {fileID: -7540058835382475287}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2078296987376989786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Dummyball
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Dummyball
   Guid:
     Data1: -349403761
     Data2: 1256722436
@@ -141,6 +188,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-1905505620682821345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/LineDraw
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/LineDraw
+  Guid:
+    Data1: -1423022035
+    Data2: 1244713587
+    Data3: -2092502349
+    Data4: 130206474
+  Banks:
+  - {fileID: -7540058835382475287}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-737903073976637882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/InGame
+  m_EditorClassIdentifier: 
+  Path: event:/Music/InGame
+  Guid:
+    Data1: 1384151020
+    Data2: 1117918326
+    Data3: -818927488
+    Data4: -1598115165
+  Banks:
+  - {fileID: -7010596103362017271}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 238656
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,43 +258,47 @@ MonoBehaviour:
   - {fileID: -4443792824310139801}
   - {fileID: -8234313479639953150}
   - {fileID: -7540058835382475287}
+  - {fileID: -7010596103362017271}
   EditorEvents:
-  - {fileID: -8209422600333450888}
-  - {fileID: 532930382956317482}
-  - {fileID: 4521006439662197435}
-  - {fileID: -1306386269367433135}
-  - {fileID: 2652471812190390145}
-  - {fileID: -6695483592912599454}
-  - {fileID: 1581582711412119855}
-  - {fileID: 8677817123013296587}
-  - {fileID: 6247174704626697035}
+  - {fileID: -737903073976637882}
+  - {fileID: 3527860908898873547}
+  - {fileID: 874353209445279484}
+  - {fileID: -1905505620682821345}
+  - {fileID: 8199402429435505313}
+  - {fileID: 2678383526521775124}
+  - {fileID: -8412504643466740295}
+  - {fileID: -2078296987376989786}
+  - {fileID: -2230154266612305029}
+  - {fileID: -2952704460930843961}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8234313479639953150}
   StringsBanks:
   - {fileID: -4443792824310139801}
   cacheVersion: 131847
-  cacheTime: 638880421356867948
+  cacheTime: 638880464932187269
   SerializableEventsDict:
-  - key: event:/Fireball
+  - key: event:/Music/InGame
     index: 0
-  - key: event:/SkillSelect
+  - key: event:/SFX/PaddleSizeup
     index: 1
-  - key: event:/BallVoidBounce
+  - key: event:/SFX/Fireball
     index: 2
-  - key: event:/Dummyball
+  - key: event:/SFX/LineDraw
     index: 3
-  - key: event:/BallWallBounce
+  - key: event:/SFX/SkillSelect
     index: 4
-  - key: event:/PaddleSizeup
+  - key: event:/SFX/BallVoidBounce
     index: 5
-  - key: event:/Goal
+  - key: event:/SFX/ButtonClick
     index: 6
-  - key: event:/LineDraw
+  - key: event:/SFX/Dummyball
     index: 7
-  - key: event:/ButtonClick
+  - key: event:/SFX/Goal
     index: 8
---- !u!114 &532930382956317482
+  - key: event:/SFX/BallWallBounce
+    index: 9
+--- !u!114 &874353209445279484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,14 +308,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SkillSelect
+  m_Name: event:/SFX/Fireball
   m_EditorClassIdentifier: 
-  Path: event:/SkillSelect
+  Path: event:/SFX/Fireball
   Guid:
-    Data1: 582647342
-    Data2: 1296375399
-    Data3: 89497994
-    Data4: -1101363203
+    Data1: 1802022942
+    Data2: 1141997084
+    Data3: -2136658276
+    Data4: 1190794948
   Banks:
   - {fileID: -7540058835382475287}
   IsStream: 0
@@ -220,7 +325,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &1581582711412119855
+--- !u!114 &2678383526521775124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,63 +335,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Goal
+  m_Name: event:/SFX/BallVoidBounce
   m_EditorClassIdentifier: 
-  Path: event:/Goal
-  Guid:
-    Data1: 1087318177
-    Data2: 1252580727
-    Data3: -2019667522
-    Data4: 960664101
-  Banks:
-  - {fileID: -7540058835382475287}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &2652471812190390145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/BallWallBounce
-  m_EditorClassIdentifier: 
-  Path: event:/BallWallBounce
-  Guid:
-    Data1: 733413838
-    Data2: 1115518042
-    Data3: -1300212066
-    Data4: -1237883527
-  Banks:
-  - {fileID: -7540058835382475287}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
---- !u!114 &4521006439662197435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/BallVoidBounce
-  m_EditorClassIdentifier: 
-  Path: event:/BallVoidBounce
+  Path: event:/SFX/BallVoidBounce
   Guid:
     Data1: -440031412
     Data2: 1330390335
@@ -301,7 +352,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &6247174704626697035
+--- !u!114 &3527860908898873547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,14 +362,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/ButtonClick
+  m_Name: event:/SFX/PaddleSizeup
   m_EditorClassIdentifier: 
-  Path: event:/ButtonClick
+  Path: event:/SFX/PaddleSizeup
   Guid:
-    Data1: -441032113
-    Data2: 1203118331
-    Data3: -630672708
-    Data4: 1829732001
+    Data1: -1015120871
+    Data2: 1284198459
+    Data3: 38227867
+    Data4: -1744483606
   Banks:
   - {fileID: -7540058835382475287}
   IsStream: 0
@@ -328,7 +379,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &8677817123013296587
+--- !u!114 &8199402429435505313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -338,14 +389,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/LineDraw
+  m_Name: event:/SFX/SkillSelect
   m_EditorClassIdentifier: 
-  Path: event:/LineDraw
+  Path: event:/SFX/SkillSelect
   Guid:
-    Data1: -1423022035
-    Data2: 1244713587
-    Data3: -2092502349
-    Data4: 130206474
+    Data1: 582647342
+    Data2: 1296375399
+    Data3: 89497994
+    Data4: -1101363203
   Banks:
   - {fileID: -7540058835382475287}
   IsStream: 0
